@@ -56,15 +56,7 @@
 	}
 	?>
     <?php
-
 	$msj = $this->session->flashdata('msj');
-	// print_r($msj);
-	// if ($msj == 'ok') {
-
-	//     echo "se creo correctamente ";
-	// }else{
-	//  echo "no se creo ";
-	// }
 	?>
     <!--   ANIMACION DE LOGIN   -->
     <script src="<?= base_url('assets/js/index.js'); ?>"></script>
