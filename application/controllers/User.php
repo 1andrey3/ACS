@@ -43,7 +43,7 @@ class User extends CI_Controller {
             
         } else {
             $response['mensaje'] = 'Error de actualización';
-            $response['texto'] = 'El NO. de documento es desconocido!';
+            $response['texto'] = 'El No. de documento es desconocido!';
             $response['tipo'] = 'error';
             $this->load->view('login', $response);
         }
@@ -51,7 +51,7 @@ class User extends CI_Controller {
 
     // Carga la vista ppal segun el roll
     public function principal($role) {
-        if (!$this->session->userdata('id')){header('location: ' . base_url());}
+        // if (!$this->session->userdata('id')){header('location: ' . base_url());}
         $data['title'] = 'Principal';
         $this->load->view('parts/header', $data);
         $this->load->view("$role");

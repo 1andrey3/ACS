@@ -27,43 +27,33 @@
 
     }
 
-
-
-
 </script>
 
 <!--************************************************* NO TOUCH     DON'T TOCAR ************************************************* -->
-<?php if ($this->uri->segment(1) == 'FormulariosAcces'): ?>
-    <script src="<?= base_url("assets/plugins/jquery/jquery.min.js") ?>"></script>
-    <script src="<?= base_url("assets/js/modules/Access.js?v=" . validarEnProduccion()) ?>"></script>
-<?php endif ?>
 
-<?php if ($this->uri->segment(2) != 'crear_malla'): ?>
     <script src="<?= base_url("assets/plugins/jquery/jquery.min.js") ?>"></script>
-<?php endif ?>
-<script src="<?= base_url("assets/plugins/bootstrap/js/bootstrap.min.js") ?>"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+    <script src="<?= base_url("assets/plugins/bootstrap/js/bootstrap.min.js") ?>"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
 
 <!-- **********************************************datatables *********************************************-->
-<script src="<?= base_url('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
-<script src="<?= base_url('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
 
 <!-- ********************************************** SWEET ALERT 2 *********************************************-->
-<script src="<?= base_url("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
+    <script src="<?= base_url("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
 <!-- ********************************************** HELPER FUNCVIONES GLOBALES *********************************************-->
 <script src="<?= base_url("assets/js/modules/helper.js?v=" . validarEnProduccion()) ?>"></script>
 <script src="<?= base_url("assets/js/modules/configuracion_user.js?v=" . validarEnProduccion()) ?>"></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $.post(base_url + 'Temp/getLastDateTemp', {}, function(data) {
         const hour = JSON.parse(data);
         $('#hora_actualizacion').append('<h6 class="h6-il">última actualización </h6>' + hour);
     });
-</script>
+</script> -->
 
 
 
@@ -234,5 +224,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/ConfigTableUsers.js'); ?>"></script>
 <?php endif ?>
+
 </body>
 </html>
