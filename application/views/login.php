@@ -14,11 +14,11 @@
     <script type="text/javascript" src="<?= base_url('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
     <script type="text/javascript" charset="utf-8" async defer>
         //Funcion para mostrar mensaje de error de validacion de datos
-        function showMessage() {
+        function showMessage(tit = "Error de autentificación!", text = "Por favor verificar los datos", tipo = 'error') {
             swal({
-                title: "Error de autentificación!",
-                text: "Por favor verificar los datos",
-                type: "error",
+                title: tit,
+                text: text,
+                type: tipo,
                 confirmButtonText: "Ok"
             });
         }
@@ -51,15 +51,15 @@
     </div>
 
     <?php
-	if (isset($error)) {
-		echo '<script type="text/javascript">showMessage();</script>';
-	}
-	?>
+    if (isset($mensaje)) {
+        echo "<script type='text/javascript'>showMessage('$mensaje','$texto','$tipo');</script>";
+    }
+    ?>
     <?php
-	$msj = $this->session->flashdata('msj');
-	?>
+        $msj = $this->session->flashdata('msj');
+    ?>
     <!--   ANIMACION DE LOGIN   -->
     <script src="<?= base_url('assets/js/index.js'); ?>"></script>
 </body>
 
-</html> 
+</html>

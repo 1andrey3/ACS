@@ -68,7 +68,16 @@ class Welcome extends CI_Controller
 	{
 		$inpCambio =  $this->input->post('inputDos');
 		$id = $this->input->post('id');
-		$this->ContrasenaNueva->cambiar($id, $inpCambio);
-		$this->load->view('login');
+		if($this->ContrasenaNueva->cambiar($id, $inpCambio) == 1){
+			$data['mensaje'] = 'Contraseña Actualizada!';
+			$data['texto'] = 'Por favor, ingrese con su nueva contraseña';
+			$data['tipo'] = 'success';
+			$this->load->view('login',$data);
+		}else{
+			$data['mensaje'] = 'Error de actualización';
+			$data['texto'] = 'Por favor, intente nuevamente el cambiado de contraseña';
+			$data['tipo'] = 'error';
+			$this->load->view('login',$data);
+		}
 	}
 }

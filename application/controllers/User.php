@@ -15,28 +15,36 @@ class User extends CI_Controller {
         $idUser = $this->input->post('username');
         $pass = $this->input->post('contrasena');
         $val_user = $this->Dao_user_model->getUserByUsername($idUser);
-        if($pass === 'abc123'){
-            $this->load->view('cambiarContrasena');
-        } else if ($val_user != null) {
-            $val_pass = $this->Dao_user_model->validatePass($pass, $val_user->id_usuario);
-            if ($val_pass != null) {
-                $data = array(
-                    'role' => $val_user->rol,
-                    'id' => $val_user->id_usuario,
-                    'name' => $val_user->nombres . " " . $val_user->apellidos,
-                    'email'=> $val_user->email
-                );
-                echo("<pre>"); print_r($data); echo("</pre>");
-                echo("<pre>"); print_r("=========================================="); echo("</pre>");
-                $this->session->set_userdata($data);
-                // header('location: ' . base_url() . "User/principal/$val_user->rol");
-                header('location: ' . base_url() . "User/principal/$val_user->rol");
-            } else {
-                $response['error'] = "error";
-                $this->load->view('login', $response);
-            }
+        if ($val_user != null) {
+                $val_pass = $this->Dao_user_model->validatePass($pass, $val_user->id_usuario);
+                if ($val_pass != null) {
+                    if ($pass === 'abc123' || strlen($pass) <= 6) {
+                        $data['usuario'] = $val_user;
+                        $this->load->view('cambiarContrasena', $data);
+                    }else{
+                        $data = array(
+                            'role' => $val_user->rol,
+                            'id' => $val_user->id_usuario,
+                            'name' => $val_user->nombres . " " . $val_user->apellidos,
+                            'email' => $val_user->email
+                        );
+                        // echo ("<pre>");print_r($data);echo ("</pre>");
+                        // echo ("<pre>");print_r("==========================================");echo ("</pre>");
+                        $this->session->set_userdata($data);
+                        // header('location: ' . base_url() . "User/principal/$val_user->rol");
+                        header('location: ' . base_url() . "User/principal/$val_user->rol");
+                    }
+                } else {
+                    $response['mensaje'] = 'Error de autentificación!';
+                    $response['texto'] = 'La contraseña es errónea';
+                    $response['tipo'] = 'error';
+                    $this->load->view('login', $response);
+                }
+            
         } else {
-            $response['error'] = "error";
+            $response['mensaje'] = 'Error de actualización';
+            $response['texto'] = 'El NO. de documento es desconocido!';
+            $response['tipo'] = 'error';
             $this->load->view('login', $response);
         }
     }
@@ -44,7 +52,6 @@ class User extends CI_Controller {
     // Carga la vista ppal segun el roll
     public function principal($role) {
         if (!$this->session->userdata('id')){header('location: ' . base_url());}
-        echo("<pre>"); print_r($role); echo("</pre>");
         $data['title'] = 'Principal';
         $this->load->view('parts/header', $data);
         $this->load->view("$role");
