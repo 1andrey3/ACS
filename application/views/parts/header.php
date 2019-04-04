@@ -34,6 +34,7 @@
             <img src="<?= base_url('assets/images/espalda.png') ?>" alt="cerrar">
         </button>
         <a href="<?= base_url('User/principal/' . $this->session->userdata('role')) ?>" class='w3-bar-item w3-button'><i class="fa fa-home"></i> Home</a>
+        <a href="<?= base_url('Welcome/creacionGrupoVM') ?>" class='w3-bar-item w3-button'><i class="fa fa-home"></i> Creación de grupo VM</a>
 
     </div>
     <!-- FIN SIDEBAR -->

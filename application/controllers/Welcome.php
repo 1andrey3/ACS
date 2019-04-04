@@ -64,6 +64,11 @@ class Welcome extends CI_Controller
 	{
 		$this->load->view('cambiarContrasena');
 	}
+	function creacionGrupoVM(){
+		$this->load->view('parts/header');
+		$this->load->view('grupoVM');
+		$this->load->view('parts/footer');
+	}
 	function CambioContra()
 	{
 		$inpCambio =  $this->input->post('inputDos');
