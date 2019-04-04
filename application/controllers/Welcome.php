@@ -48,6 +48,23 @@ class Welcome extends CI_Controller
 		$this->UserTable->insertar($info);
 		header('location:showUsers');
 	}
+	function datosGrupoVM(){
+		$form = [];
+		$form[0] = $_POST['fechaSolicitud'];
+		$form[1] = $_POST['idSiteAccess'];
+		$form[2] = $_POST['estacion'];
+		$form[3] = $_POST['tecnologia'];
+		$form[4] = $_POST['banda'];
+		$form[5] = $_POST['typeTrabajo'];
+		$form[6] = $_POST['enteEjecutor'];
+		$form[7] = $_POST['nGSkype'];
+		$form[8] = $_POST['rSkype'];
+		$form[9] = $_POST['personaSolicita'];
+		$form[10] = $_POST['horaApertura'];
+		$form[11] = $_POST['ingenieroCreadorG'];
+		$form[12] = $_POST['incidente'];
+		var_dump($form);
+	}
 	function UpdateSQL()
 	{
 		$actual[0] = $this->input->post('idNumberModal');
