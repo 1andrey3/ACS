@@ -8,6 +8,7 @@ class Welcome extends CI_Controller
 		parent::__construct();
 		$this->load->model('UserTable');
 		$this->load->model('ContrasenaNueva');
+		$this->load->model('Formulario');
 	}
 
 	public function index()
@@ -50,8 +51,8 @@ class Welcome extends CI_Controller
 	}
 	function datosGrupoVM(){
 		$form = [];
-		$form[0] = $_POST['fechaSolicitud'];
-		$form[1] = $_POST['idSiteAccess'];
+		$form[0] = $_POST['idSiteAccess'];
+		$form[1] = $_POST['fechaSolicitud'];
 		$form[2] = $_POST['estacion'];
 		$form[3] = $_POST['tecnologia'];
 		$form[4] = $_POST['banda'];
@@ -64,6 +65,8 @@ class Welcome extends CI_Controller
 		$form[11] = $_POST['ingenieroCreadorG'];
 		$form[12] = $_POST['incidente'];
 		var_dump($form);
+		$this->Formulario->guardarDatos($form);
+		header('location:creacionGrupoVM');
 	}
 	function UpdateSQL()
 	{
@@ -82,7 +85,11 @@ class Welcome extends CI_Controller
 		$this->load->view('cambiarContrasena');
 	}
 	function creacionGrupoVM(){
-		$this->load->view('parts/header');
+		$data['estacion'] = $this->Formulario->recorridoEstacion();
+		$data['tecnologia'] = $this->Formulario->recorridoTecnologia();
+		$data['banda'] = $this->Formulario->recorridoBanda();
+		$data['title'] = "Creación Grupos VM";
+ 		$this->load->view('parts/header',$data);
 		$this->load->view('grupoVM');
 		$this->load->view('parts/footer');
 	}

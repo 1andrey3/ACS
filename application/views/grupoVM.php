@@ -14,12 +14,6 @@
     grid-column: 1 / 2;
     grid-row: 1 / 3;
   }
-  .btnLat{
-    display: block;
-    margin:  10px auto;
-    width: 100%;
-    height: 20%;
-  }
   .contenidoVM{
     grid-column: 2 / 6;
     grid-row: 1 / 3;
@@ -90,10 +84,6 @@
       <form action="<?= base_url('Welcome/datosGrupoVM') ?>" method="POST" >
       <div class="modal-body formularioVM" id="">
         <div class="botonesLaterales">
-            <button class="btnLat">Realizar Apertura VM</button>
-            <button class="btnLat">Realizar Punto De Control</button>
-            <button class="btnLat">Realizar Cierre de VM</button>
-            <button class="btnLat">Tickets Remedy</button>
         </div>
         <div class="contenidoVM">
           <div class="BnuevoVM">
@@ -107,36 +97,34 @@
           </div>
           <div>
             <label for="">Fecha y hora de solicitud:</label><br>
-            <input type="date" class="form-control" name="fechaSolicitud">
+            <input type="text" class="form-control" name="fechaSolicitud">
           </div>
           <div>
             <label for="">ID_Site_Access:</label><br>
             <input type="text" class="form-control" name="idSiteAccess">
           </div>
-          <div>
+          <div class="form-group">
             <label for="">ESTACIÓN:</label><br>
-            <input type="text" class="form-control" name="estacion" >
+            <select class="form-control" name="estacion">
+            <?php foreach($estacion as $key=>$row):?>
+            <option id="<?php echo $key?>"><?php echo $row['sitio'] ?></option>
+            <?php endforeach ?>
+          </select>
           </div>
           <div class="form-group">
           <label for="">TECNOLOGIA:</label><br>
           <select class="form-control" name="tecnologia">
-            <option>2G</option>
-            <option>2G/3G</option>
-            <option>2G/3G/LTE</option>
-            <option>3G/LTE</option>
-            <option>LTE</option>
+          <?php foreach($tecnologia as $key=>$row):?>
+            <option  value="<?php echo $key ?>"><?php echo $row['nombre_tecnologia'] ?></option>
+            <?php endforeach ?>
           </select>
           </div>
           <div class="form-group">
           <label for="">Banda:</label><br>
           <select class="form-control" name="banda">
-            <option>1900MHz</option>
-            <option>1900MHz/2600MHz</option>
-            <option>2600MHz</option>
-            <option>850MHz</option>
-            <option>850MHz/1900MHz</option>
-            <option>850MHz/1900MHz/2600MHz</option>
-            <option>850MHz/2600MHz</option>
+          <?php foreach( $banda as $key=>$row):?>
+            <option value="<?php echo $key+1 ?>"><?php echo $row['nombre_banda'] ?></option>
+            <?php endforeach ?>
           </select>
           </div>
           <div>
@@ -153,12 +141,7 @@
           </div>
           <div class="form-group">
             <label for="">Regional Skype</label><br>
-            <select class="form-control" name="rSkype">
-            <option>Centro</option>
-            <option>Costa</option>
-            <option>Nor Occidente</option>
-            <option>Oriente</option>
-            <option>Sur Occidente</option>
+            <input type="text" class="form-control" id="" name="rSkype">
           </select>
           </div>
           <div>
