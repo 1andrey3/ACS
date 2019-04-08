@@ -3,7 +3,7 @@
 <style>
   .formularioVM{
     display:grid;
-    height: 450px;
+    height: 350px;
     width: 100%
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -53,6 +53,10 @@
   .lin{
     color: black;
   }
+  .footerModal{
+    display:inline;
+    padding-left: 30px;
+  }
 </style>
 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" id ="formulario">formulario</button>
 <table class="table table-striped">
@@ -86,13 +90,9 @@
         <div class="botonesLaterales">
         </div>
         <div class="contenidoVM">
-          <div class="BnuevoVM">
-            <button class="btnNuevo">Realizar Nueva VM</button>
-          </div>
           <div class="navAsig">
           <ul class="nav nav-pills">
             <li class="active lin"><a href="#">Creación De Ventanas</a></li>
-            <li><a href="#" class="lin">Asignar Ingenieros / Rechazar VM</a></li>
           </ul>
           </div>
           <div>
@@ -101,7 +101,7 @@
           </div>
           <div>
             <label for="">ID_Site_Access:</label><br>
-            <input type="text" class="form-control" name="idSiteAccess">
+            <input type="number" class="form-control" name="idSiteAccess">
           </div>
           <div class="form-group">
             <label for="">ESTACIÓN:</label><br>
@@ -126,10 +126,6 @@
             <option value="<?php echo $key+1 ?>"><?php echo $row['nombre_banda'] ?></option>
             <?php endforeach ?>
           </select>
-          </div>
-          <div>
-            <label for="">Tipo De Trabajo:</label><br>
-            <input type="text" class="form-control" name="typeTrabajo">
           </div>
           <div>
             <label for="">Ente Ejecutor:</label><br>
@@ -160,15 +156,15 @@
             <label for="">Incidente</label><br>
             <input type="text" class="form-control" name="incidente">
           </div>
-          <div clas="divEnvio">
-            <input type="submit" class="btn btn-danger divBtnEnvio">
-          </div>
         </div>
       </div>
-      </form>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <div class="modal-footer footerModal">
+        <div clas="divEnvio">
+          <input type="submit" class="btn btn-danger divBtnEnvio">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
+    </form>
     </div>
   </div>
 </div>    
