@@ -35,8 +35,9 @@
             <img src="<?= base_url('assets/images/espalda.png') ?>" alt="cerrar">
         </button>
         <a href="<?= base_url('User/principal/' .$this->session->userdata('role')) ?>" class='w3-bar-item w3-button'><i class="fa fa-home"></i> Home</a>
+        <?php if ($this->uri->segment(2) == 'principal' && $_SESSION['role'] == "administrador") : ?>
         <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion de usuarios</a>
-
+      <?php endif ?>
     </div>
     <!-- FIN SIDEBAR -->
     <div class="telmexVIP_header ">

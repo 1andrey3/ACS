@@ -31,6 +31,8 @@
 <script type="text/javascript"> var baseurl = "<?php echo base_url(); ?>";</script>
 
 <!--************************************************* NO TOUCH     DON'T TOCAR ************************************************* -->
+    <script src="<?= base_url("assets/plugins/validate/validate.min.js") ?>"></script>
+    <script src="<?= base_url("assets/plugins/validate/validate.js") ?>"></script>
 
     <script src="<?= base_url("assets/plugins/jquery/jquery.min.js") ?>"></script>
     <script src="<?= base_url("assets/plugins/bootstrap/js/bootstrap.min.js") ?>"></script>

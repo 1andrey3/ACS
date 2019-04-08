@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dao_user_model extends CI_Model {
 
     public function __construct() {
-        
+
     }
 
     //consulta usuario unico por username
@@ -18,7 +18,7 @@ class Dao_user_model extends CI_Model {
         }
     }
 
-    //consulta usuario unico por password	
+    //consulta usuario unico por password
     public function validatePass($pass, $id_user) {
         $query = $this->db->get_where('usuario', array('contrasena' => $pass, 'id_usuario' => $id_user));
         if ($query->num_rows() > 0) {
@@ -31,14 +31,14 @@ class Dao_user_model extends CI_Model {
     // obtiene todos los ingenieros y su id
     public function getEngineers() {
         $query = $this->db->query("
-			SELECT id_usuario AS id, CONCAT(nombres,' ',apellidos) AS title 
-			FROM usuario 
+			SELECT id_usuario AS id, CONCAT(nombres,' ',apellidos) AS title
+			FROM usuario
 			WHERE rol = 'ingeniero';
 		");
 
-		return $query->result(); 
+		return $query->result();
 	}
-    
+
     //trae la contraseña del usuario en sesion
 	public function get_pass_by_id($user){
 		$query = $this->db->query("
@@ -55,16 +55,16 @@ class Dao_user_model extends CI_Model {
 			return 0;
 		}
     }
-    
+
     // obtiene ingenieros que se encuentran agendados en la malla para la fecha que se pasa por parametro
     public function getMeshEngineersByDate($date) {
         $fecha = explode("-", $date);
-        
+
         $query = $this->db->query("
-			SELECT ma.id_usuario,  
+			SELECT ma.id_usuario,
                             concat(us.nombres, ' ', us.apellidos) AS nombre,
                             (SELECT COUNT(id_ticket) FROM ticket WHERE usuario_asignado = ma.id_usuario AND fecha_programacion = '$date') cant,
-                            `$fecha[2]` 
+                            `$fecha[2]`
                         FROM malla ma
                         INNER JOIN usuario us ON us.id_usuario = ma .id_usuario AND us.rol = 'ingeniero'
                         WHERE ano = $fecha[0]
