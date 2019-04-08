@@ -54,7 +54,7 @@
     color: black;
   }
 </style>
-<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">formulario</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" id ="formulario">formulario</button>
 <table class="table table-striped">
   <thead>
     <th>Fecha y hora de solicitud</th>
@@ -105,9 +105,9 @@
           </div>
           <div class="form-group">
             <label for="">ESTACIÓN:</label><br>
-            <select class="form-control" name="estacion">
+            <select class="form-control"  name="estacion" id ="estacion">
             <?php foreach($estacion as $key=>$row):?>
-            <option id="<?php echo $key?>"><?php echo $row['sitio'] ?></option>
+            <option id ="posicion"><?php echo $row['sitio']?> </option>
             <?php endforeach ?>
           </select>
           </div>
@@ -141,7 +141,7 @@
           </div>
           <div class="form-group">
             <label for="">Regional Skype</label><br>
-            <input type="text" class="form-control" id="" name="rSkype">
+            <input type="text" class="form-control rsky" name="rSkype" id="rSkype" disabled>
           </select>
           </div>
           <div>
@@ -172,3 +172,35 @@
     </div>
   </div>
 </div>    
+
+<script>
+
+const estacionTabla = fetch('tablaJson', {    
+}).then(data => data.text())
+  .then(data => {
+    const btn = document.querySelector('#formulario');
+    const obj  = JSON.parse(data);
+    console.log(btn);
+    console.log(obj);
+    btn.addEventListener('click', () => {
+      const estacion = document.querySelector('#estacion');
+      console.log(estacion);
+      estacion.addEventListener('click', () => {
+        const estacion2 = estacion.value;
+        console.log(estacion2);
+        for(let x = 0; x < obj.length; x++){
+          if(obj[x].sitio == estacion2){
+            document.getElementById('rSkype').value = obj[x].region;
+          }
+        }
+        // document.querySelector('#rSkype').value = 'buenas';
+        // console.log(estacion.value);
+      })
+    })
+  })
+  .catch(error => {
+    console.log('ERROR' , error);
+  });
+
+  console.log(estacionTabla);
+</script>

@@ -93,6 +93,15 @@ class Welcome extends CI_Controller
 		$this->load->view('grupoVM');
 		$this->load->view('parts/footer');
 	}
+	function tablaJson(){
+		$tabla = $this->Formulario->recorridoEstacion();
+		echo json_encode($tabla);
+
+		// echo '<pre>'; print_r($ids); echo '</pre>';
+		// print_r($tabla[]['id_estacion']);
+
+		// var_dump(json_encode($tabla));
+	}
 	function CambioContra()
 	{
 		$inpCambio =  $this->input->post('inputDos');
