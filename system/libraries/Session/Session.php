@@ -140,7 +140,7 @@ class CI_Session {
 			unset($_COOKIE[$this->_config['cookie_name']]);
 		}
 
-		// session_start();
+		session_start();
 
 		// Is session ID auto-regeneration configured? (ignoring ajax requests)
 		if ((empty($_SERVER['HTTP_X_REQUESTED_WITH']) OR strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')
@@ -301,7 +301,7 @@ class CI_Session {
 		else
 		{
 			$params['expiration'] = (int) $expiration;
-			INI_SET('session.gc_maxlifetime', $expiration);
+			ini_set('session.gc_maxlifetime', $expiration);
 		}
 
 		$params['match_ip'] = (bool) (isset($params['match_ip']) ? $params['match_ip'] : config_item('sess_match_ip'));

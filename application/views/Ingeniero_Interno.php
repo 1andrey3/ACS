@@ -1,3 +1,5 @@
+<?php
+if ($_SESSION['role'] != 'Ingeniero_Interno') {    header('location:'.base_url('user/principal/'.$_SESSION['role']));} ?>
 <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero est assumenda ducimus, exercitationem sint quibusdam odit quisquam autem architecto nemo ipsam, reprehenderit numquam velit facilis dolore quasi porro. Voluptatum, tenetur.
 Nemo saepe hic sint? Quidem distinctio voluptates maxime, quas, veritatis in quaerat id, fugit nisi reprehenderit quae molestias. Impedit quo nemo sed perferendis, ducimus dolorem molestias et similique possimus perspiciatis!
 Inventore corrupti, reprehenderit perspiciatis eos nisi voluptatem laboriosam, nostrum incidunt expedita recusandae rem quidem. Beatae expedita autem delectus vel. Similique laborum porro eum, deserunt eveniet necessitatibus nam quasi iure. Aperiam.

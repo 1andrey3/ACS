@@ -23,17 +23,24 @@
             abrir_reportes();
             clickreportes = false;
             abrirOcerrarReportesNormales();
-        <?php endif ?>        
+        <?php endif ?>
 
     }
 
 </script>
+<script type="text/javascript"> var baseurl = "<?php echo base_url(); ?>";</script>
 
 <!--************************************************* NO TOUCH     DON'T TOCAR ************************************************* -->
+    <script src="<?= base_url("assets/plugins/validate/validate.min.js") ?>"></script>
+    <script src="<?= base_url("assets/plugins/validate/validate.js") ?>"></script>
 
     <script src="<?= base_url("assets/plugins/jquery/jquery.min.js") ?>"></script>
     <script src="<?= base_url("assets/plugins/bootstrap/js/bootstrap.min.js") ?>"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+
+    <!-- Gestion de usuarios -->
+    <script src="<?= base_url("assets/js/gestion_usuarios.js") ?>"></script>
+    <script src="<?= base_url("assets/js/eventos_gestion_usuarios.js") ?>"></script>
 
 <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
