@@ -15,7 +15,11 @@ class Formulario extends CI_Model{
     }
     function recorridoBanda(){
         $data= $this->db->query('SELECT * FROM  banda');
-         return $data->result_array(); 
+        return $data->result_array(); 
+    }
+    function recorridoGrupoVM(){
+        $data= $this->db->query('SELECT * FROM  grupovm');
+        return $data->result_array(); 
     }
     function guardarDatos($data){
         var_dump($data);
