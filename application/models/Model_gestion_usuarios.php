@@ -76,5 +76,18 @@ class Model_gestion_usuarios extends CI_Model
     $query = $this->db->query("DELETE FROM usuario WHERE id_usuario = '$data'");
 
   }
+
+  //Funcion meramente de prueba, no tomarla enserio (JC)
+  public function busqueda_de_usuarios(){
+    $query=$this->db->query("
+      SELECT
+        us.id_usuario AS ID_ZTE
+        us.rol AS tipo_de_trabajo
+        us.nombres AS estado_vm
+        us.apellidos AS ingeniero_apertura
+        us.email AS apertura
+      ");
+    return $query->result();
+  }
 }
 ?>

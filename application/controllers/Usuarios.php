@@ -60,6 +60,11 @@ public function eliminar_usuario()
   $resultado = $this->Model_gestion_usuarios->eliminar_usuario($id);
 
 }
+  //Funcion de mera prueba, no tomarla enserio (JC)
+  public function buscar_datos_usuario(){
+    $data=$this->Model_gestion_usuarios->busqueda_de_usuarios();
+    echo json_encode($data);
+  }
 
 }
 ?>
