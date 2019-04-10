@@ -59,22 +59,43 @@
   }
 </style>
 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" id ="formulario">formulario</button>
-<table class="table table-striped">
+<table class="table table-striped" id =tabla>
   <thead>
-    <th>Fecha y hora de solicitud</th>
-    <th>ID_Site_Access</th>
-    <th>ESTACIÓN</th>
-    <th>TECNOLOGIA</th>
-    <th>Banda</th>
-    <th>Tipo De Trabajo</th>
-    <th>Ente Ejecutor</th>
-    <th>Nombre Del Grupo Skype</th>
-    <th>Regional Skype</th>
-    <th>Persona Que Solicita</th>
-    <th>Hora De Apertura</th>
-    <th>Ingeniero Creador De G</th>
-    <th>Incidente</th>
+    <tr>
+      <th>ID_Site_Access</th>
+      <th>Fecha y hora de solicitud</th>
+      <th>ESTACIÓN</th>
+      <th>TECNOLOGIA</th>
+      <th>Banda</th>
+      <th>Tipo De Trabajo</th>
+      <th>Ente Ejecutor</th>
+      <th>Nombre Del Grupo Skype</th>
+      <th>Persona Que Solicita</th>
+      <th>Hora De Apertura</th>
+      <th>Ingeniero Creador De G</th>
+      <th>Incidente</th>
+      <th>Tomar datos</th>
+    </tr>
   </thead>
+  <tbody>
+    <?php foreach ($grupoSitios as $key=>$row): ?>
+    <tr id = "trs">
+        <td id ="ths"> <?php echo $row['ID_Site_Access'] ?></td>
+        <td id ="ths"> <?php echo $row['F_H_Solicitud'] ?></td>
+        <td id ="ths"> <?php echo $row['Estacion'] ?></td>
+        <td id ="ths"> <?php echo $row['Tecnologia'] ?></td>
+        <td id ="ths"> <?php echo $row['Banda'] ?></td>
+        <td id ="ths"> <?php echo $row['Ente_ejecutor'] ?></td>
+        <td id ="ths"> <?php echo $row['Nombre_grupo_skype'] ?></td>
+        <td id ="ths"> <?php echo $row['Regional_skype'] ?></td>
+        <td id ="ths"> <?php echo $row['Persona_solicita'] ?></td>
+        <td id ="ths"> <?php echo $row['Hora_apertura'] ?></td>
+        <td id ="ths"> <?php echo $row['Ingeniero_CreadorG'] ?></td>
+        <td id ="ths"> <?php echo $row['Incidente'] ?></td>
+        <td><button class="btn btn-info" id="btn" data-toggle="modal" data-target="#myModal" onclick ="tomarDatos(this.parentNode)">tomar</button></td>
+      </tr>
+    <?php endforeach ?>
+  </tbody>
 </table>
 
 <!-- Modal -->
@@ -97,11 +118,11 @@
           </div>
           <div>
             <label for="">Fecha y hora de solicitud:</label><br>
-            <input type="text" class="form-control" name="fechaSolicitud">
+            <input type="text" class="form-control" name="fechaSolicitud" id="fechaSolicitud">
           </div>
           <div>
             <label for="">ID_Site_Access:</label><br>
-            <input type="number" class="form-control" name="idSiteAccess">
+            <input type="number" class="form-control" name="idSiteAccess" id="idSiteAccess">
           </div>
           <div class="form-group">
             <label for="">ESTACIÓN:</label><br>
@@ -113,7 +134,7 @@
           </div>
           <div class="form-group">
           <label for="">TECNOLOGIA:</label><br>
-          <select class="form-control" name="tecnologia">
+          <select class="form-control" name="tecnologia" id="tecnologia">
           <?php foreach($tecnologia as $key=>$row):?>
             <option  value="<?php echo $key ?>"><?php echo $row['nombre_tecnologia'] ?></option>
             <?php endforeach ?>
@@ -121,7 +142,7 @@
           </div>
           <div class="form-group">
           <label for="">Banda:</label><br>
-          <select class="form-control" name="banda">
+          <select class="form-control" name="banda" id="banda">
           <?php foreach( $banda as $key=>$row):?>
             <option value="<?php echo $key+1 ?>"><?php echo $row['nombre_banda'] ?></option>
             <?php endforeach ?>
@@ -129,11 +150,11 @@
           </div>
           <div>
             <label for="">Ente Ejecutor:</label><br>
-            <input type="text" class="form-control" name="enteEjecutor">
+            <input type="text" class="form-control" name="enteEjecutor" id="enteEjecutor">
           </div>
           <div>
             <label for="">Nombre Del Grupo Skype</label><br>
-            <input type="text" class="form-control" name="nGSkype">
+            <input type="text" class="form-control" name="nGSkype" id="nGSkype">
           </div>
           <div class="form-group">
             <label for="">Regional Skype</label><br>
@@ -142,19 +163,19 @@
           </div>
           <div>
             <label for="">Persona Que Solicita</label><br>
-            <input type="text" class="form-control" name="personaSolicita">
+            <input type="text" class="form-control" name="personaSolicita" id="personaSolicita">
           </div>
           <div>
             <label for="">Hora De Apertura</label><br>
-            <input type="text" class="form-control" name="horaApertura">
+            <input type="text" class="form-control" name="horaApertura" id="horaApertura">
           </div>
           <div>
             <label for="">Ingeniero Creador De G</label><br>
-            <input type="text" class="form-control" name="ingenieroCreadorG">
+            <input type="text" class="form-control" name="ingenieroCreadorG" id="ingenieroCreadorG">
           </div>
           <div>
             <label for="">Incidente</label><br>
-            <input type="text" class="form-control" name="incidente">
+            <input type="text" class="form-control" name="incidente" id="incidente">
           </div>
         </div>
       </div>
@@ -198,5 +219,20 @@ const estacionTabla = fetch('tablaJson', {
     console.log('ERROR' , error);
   });
 
-  console.log(estacionTabla);
+  function tomarDatos(a){
+    const x = a.parentNode;
+    console.log(x.childNodes[5].innerHTML);
+
+    //  document.getElementById('idSiteAccess').value = parseInt(x.childNodes[1].innerHTML);
+     document.getElementById('fechaSolicitud').value = x.childNodes[3].innerHTML;
+     document.getElementById('estacion').value = 3 x.childNodes[5].innerHTML;
+     document.getElementById('tecnologia').value = x.childNodes[7].innerHTML;
+     document.getElementById('banda').value = x.childNodes[9].innerHTML;
+     document.getElementById('enteEjecutor').value = x.childNodes[11].innerHTML;
+     document.getElementById('nGSkype').value = x.childNodes[13].innerHTML;
+     document.getElementById('personaSolicita').value = x.childNodes[17].innerHTML;
+     document.getElementById('horaApertura').value = x.childNodes[19].innerHTML;
+     document.getElementById('ingenieroCreadorG').value = x.childNodes[21].innerHTML;
+     document.getElementById('incidente').value = x.childNodes[23].innerHTML;
+  }
 </script>

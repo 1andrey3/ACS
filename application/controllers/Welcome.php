@@ -87,6 +87,7 @@ class Welcome extends CI_Controller
 		$data['estacion'] = $this->Formulario->recorridoEstacion();
 		$data['tecnologia'] = $this->Formulario->recorridoTecnologia();
 		$data['banda'] = $this->Formulario->recorridoBanda();
+		$data['grupoSitios'] = $this->Formulario->recorridoGrupoVM();
 		$data['title'] = "Creación Grupos VM";
  		$this->load->view('parts/header',$data);
 		$this->load->view('grupoVM');
