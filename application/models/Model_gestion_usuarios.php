@@ -77,16 +77,25 @@ class Model_gestion_usuarios extends CI_Model
 
   }
 
-  //Funcion meramente de prueba, no tomarla enserio (JC)
-  public function busqueda_de_usuarios(){
+  //Funcion que obtine los datos para poblar la tabla de la vista de actividades
+  public function obtener_actividades(){
     $query=$this->db->query("
       SELECT
-        us.id_usuario AS ID_ZTE
-        us.rol AS tipo_de_trabajo
-        us.nombres AS estado_vm
-        us.apellidos AS ingeniero_apertura
-        us.email AS apertura
+        aper.id_apertura,
+        aper.id_zte AS id_zte,
+        aper.id_tipo_trabajo,
+        aper.id_usuario,
+        CONCAT(tt.nombre_tipo_trabajo) AS tipo_de_trabajo,
+        CONCAT(us.nombres,' ', us.apellidos) AS ingeniero_apertura 
+        FROM apertura aper
+        INNER JOIN tipo_trabajo tt
+        ON
+        aper.id_tipo_trabajo = tt.id_tipo_trabajo
+        INNER JOIN usuario us
+        ON 
+        aper.id_usuario = us.id_usuario 
       ");
+     // echo '<pre>';print_r($query->result());echo '</pre>';
     return $query->result();
   }
 }
