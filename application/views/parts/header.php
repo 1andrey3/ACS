@@ -23,6 +23,9 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles_footer.css'); ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
+    <!-- JQUERY -->
+    <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+    
 </head>
 
 <body data-base="<?= base_url() ?>">
@@ -37,6 +40,7 @@
         <a href="<?= base_url('User/principal/' .$this->session->userdata('role')) ?>" class='w3-bar-item w3-button'><i class="fa fa-home"></i> Home</a>
         <?php if ($this->uri->segment(2) == 'principal' && $_SESSION['role'] == "administrador") : ?>
         <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion de usuarios</a>
+        <a href="<?= base_url('Welcome/creacionGrupoVM') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> grupoVM</a>
       <?php endif ?>
     </div>
     <!-- FIN SIDEBAR -->

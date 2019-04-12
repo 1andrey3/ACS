@@ -102,6 +102,10 @@ class Welcome extends CI_Controller
 
 		// var_dump(json_encode($tabla));
 	}
+	function tablaGrupovm(){
+		$tabla =  $this->Formulario->recorridoGrupoVM();
+		echo json_encode($tabla);
+	}
 	function CambioContra()
 	{
 		$inpCambio =  $this->input->post('inputDos');

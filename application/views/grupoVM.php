@@ -58,8 +58,8 @@
     padding-left: 30px;
   }
 </style>
-<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" id ="formulario">formulario</button>
-<table class="table table-striped" id =tabla>
+<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" id ="formulario">formulario</button><br><br>
+<table class="table table-striped dataTable_camilo" id ="tablaForm">
   <thead>
     <tr>
       <th>ID_Site_Access</th>
@@ -97,7 +97,6 @@
     <?php endforeach ?>
   </tbody>
 </table>
-
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
@@ -128,7 +127,7 @@
             <label for="">ESTACIÓN:</label><br>
             <select class="form-control"  name="estacion" id ="estacion">
             <?php foreach($estacion as $key=>$row):?>
-            <option id ="posicion"><?php echo $row['sitio']?> </option>
+            <option id ="posicion" value="<?php echo $key ?>"><?php echo $row['sitio']?> </option>
             <?php endforeach ?>
           </select>
           </div>
@@ -191,48 +190,61 @@
 </div>    
 
 <script>
-
+  $(document).ready(function() {
+    $('#tablaForm').DataTable( {
+    } );
+  }); 
+  
 const estacionTabla = fetch('tablaJson', {    
 }).then(data => data.text())
   .then(data => {
     const btn = document.querySelector('#formulario');
     const obj  = JSON.parse(data);
-    console.log(btn);
+    //console.log(btn);
     console.log(obj);
     btn.addEventListener('click', () => {
       const estacion = document.querySelector('#estacion');
       console.log(estacion);
       estacion.addEventListener('click', () => {
+        console.log('holas');
         const estacion2 = estacion.value;
         console.log(estacion2);
         for(let x = 0; x < obj.length; x++){
-          if(obj[x].sitio == estacion2){
+          if(obj[x].id_estacion == estacion2){
             document.getElementById('rSkype').value = obj[x].region;
           }
         }
-        // document.querySelector('#rSkype').value = 'buenas';
-        // console.log(estacion.value);
       })
     })
   })
   .catch(error => {
-    console.log('ERROR' , error);
+    console.log('ERROR' + error);
   });
 
   function tomarDatos(a){
     const x = a.parentNode;
     console.log(x.childNodes[5].innerHTML);
-
     //  document.getElementById('idSiteAccess').value = parseInt(x.childNodes[1].innerHTML);
-     document.getElementById('fechaSolicitud').value = x.childNodes[3].innerHTML;
-     document.getElementById('estacion').value = 3 x.childNodes[5].innerHTML;
-     document.getElementById('tecnologia').value = x.childNodes[7].innerHTML;
-     document.getElementById('banda').value = x.childNodes[9].innerHTML;
-     document.getElementById('enteEjecutor').value = x.childNodes[11].innerHTML;
-     document.getElementById('nGSkype').value = x.childNodes[13].innerHTML;
-     document.getElementById('personaSolicita').value = x.childNodes[17].innerHTML;
-     document.getElementById('horaApertura').value = x.childNodes[19].innerHTML;
-     document.getElementById('ingenieroCreadorG').value = x.childNodes[21].innerHTML;
-     document.getElementById('incidente').value = x.childNodes[23].innerHTML;
+    document.getElementById('fechaSolicitud').value = x.childNodes[3].innerHTML;
+    document.getElementById('estacion').value = x.childNodes[5].innerHTML;
+    let tecnologia = document.getElementById('tecnologia').value = parseInt(x.childNodes[7].innerHTML);
+    let banda = document.getElementById('banda').value = parseInt(x.childNodes[9].innerHTML);
+    document.getElementById('enteEjecutor').value = x.childNodes[11].innerHTML;
+    document.getElementById('nGSkype').value = x.childNodes[13].innerHTML;
+    document.getElementById('personaSolicita').value = x.childNodes[17].innerHTML;
+    document.getElementById('horaApertura').value = x.childNodes[19].innerHTML;
+    document.getElementById('ingenieroCreadorG').value = x.childNodes[21].innerHTML;
+    document.getElementById('incidente').value = x.childNodes[23].innerHTML;
+
+    $("#banda option[value="+ banda +"]").attr("selected",true);
+    $("#tecnologia option[value="+ tecnologia +"]").attr("selected",true);
+
+    // for(let x = 0; x < obj.length; x++){
+    //   if(obj[x].sitio == estacion){
+    //     var posicionEstacion = obj[x].id_estacion;
+    //     break;
+    //   }
+    // }
+    // console.log(posicionEstacion);
   }
 </script>
