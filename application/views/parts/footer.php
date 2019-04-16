@@ -31,6 +31,15 @@
 <script type="text/javascript"> var baseurl = "<?php echo base_url(); ?>";</script>
 
 <!--************************************************* NO TOUCH     DON'T TOCAR ************************************************* -->
+     <?php if ($this->uri->segment(1)=='Vm' && $this->uri->segment(2)=='index') : ?>
+        <script src="<?= base_url("assets/plugins/jquery/jquery.min.js") ?>"></script>
+        <script src="<?= base_url('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.select.min.js") ?>"></script>
+        <script src="<?= base_url('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
+        <script type="text/javascript" src="<?= base_url("assets/js/actividad_vm.js?v=" .validarEnProduccion()) ?>"></script>
+    <?php endif ?>
+
+
     <script src="<?= base_url("assets/plugins/validate/validate.min.js") ?>"></script>
     <script src="<?= base_url("assets/plugins/validate/validate.js") ?>"></script>
 
@@ -68,78 +77,12 @@
 
 
 
-<?php if ($this->session->userdata('role') == 'lider'): ?>
-    <!--******************************** SI ES LIDER:  JS PARA CARGAR LA DATA ********************************-->
-    <script src="<?= base_url("assets/js/modules/custom-file-input.js?v=" . validarEnProduccion()) ?>"></script>
-    <script src="<?= base_url("assets/js/modules/loadExcel/actualizar_data.js?v=" . validarEnProduccion()) ?>"></script>
-    <script src="<?= base_url("assets/js/modules/loadExcel/loadAssignments.js?v=" . validarEnProduccion()) ?>"></script>
-    <!--******************************** FIN SI ES LIDER:  JS PARA CARGAR LA DATA ********************************-->
-<?php endif ?>
+<!-- <?php if ($this->session->userdata('role') == 'lider'): ?>
 
-<?php if ($this->uri->segment(1) == 'TasksReport' && $this->session->userdata('role') == 'lider'): ?>
-    <script src="<?= base_url("assets/js/reporteTareas.js?v=". validarEnProduccion()) ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.buttons.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/jszip.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/pdfmake.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/vfs_fonts.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/buttons.html5.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/buttons.print.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.select.min.js") ?>"></script>
-    <?php endif ?>
-
-<?php if ($this->uri->segment(1) == 'StartActivitiesReport' && $this->session->userdata('role') == 'lider'): ?>
-    <script src="<?= base_url("assets/js/inicioActividadesReport.js?v=". validarEnProduccion()) ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.buttons.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/jszip.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/pdfmake.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/vfs_fonts.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/buttons.html5.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/buttons.print.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.select.min.js") ?>"></script>
-<?php endif ?>
-
-<?php if ($this->uri->segment(1)=='Reporte' && $this->uri->segment(2)=='Reporte_cantinges' && $this->session->userdata('role') == 'lider'):?>
-     <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.buttons.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/jszip.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/pdfmake.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/vfs_fonts.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/buttons.html5.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/buttons.print.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.select.min.js") ?>"></script>
-    <script src="<?= base_url("assets/js/reporte_de_ingenieros.js?v=". validarEnProduccion()) ?>"></script>
-<?php endif ?>
-
-<?php if ($this->uri->segment(1) == 'Malla' && $this->uri->segment(2) == 'crear_malla'): ?>
-        <script src="<?= base_url("assets/js/modules/loadExcel/loadMalla.js?v=" . validarEnProduccion()) ?>"></script>
-<?php endif ?>
-
-<?php if ($this->uri->segment(1) == 'User' && $this->session->userdata('role') == 'lider'): ?>
-        <script src="<?= base_url("assets/js/modules/lider.js?v=" . validarEnProduccion()) ?>"></script>
-<?php endif ?>
-
-<?php if ($this->uri->segment(1) == 'User' && $this->session->userdata('role') == 'documentador'): ?>
-    <script src="<?= base_url("assets/js/modules/documentador.js?v=" . validarEnProduccion()) ?>"></script>
-<?php endif ?>
-
-<?php if ($this->uri->segment(1) == 'User' && $this->session->userdata('role') == 'ingeniero'): ?>
-    <script src="<?= base_url('assets/js/ingeniero_vista_drive.js'); ?>"></script>
-    <script src="<?= base_url("assets/js/modules/ingeniero.js?v=" . validarEnProduccion()) ?>"></script>
-<?php endif ?>
-
+<?php endif ?> -->
 
 
 <!-- **********************************************datatables plus (excel ... ) *********************************************-->
-<?php if ($this->uri->segment(1) == 'User' || $this->uri->segment(2) == 'allTickets'): ?>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.buttons.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/jszip.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/pdfmake.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/vfs_fonts.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/buttons.html5.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/buttons.print.min.js") ?>"></script>
-    <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.select.min.js") ?>"></script>
-
-<?php endif ?>
-
 <?php if ($this->uri->segment(1) == 'Mannagement' && !$this->uri->segment(2)): ?>
     <script src="<?= base_url('assets/js/modules/comoVamos/graficas.js'); ?>"></script>
 <?php endif ?>
@@ -213,14 +156,6 @@
 
 <script src="<?= base_url("assets/js/utils/app.global.js?v=1.2") ?>" type="text/javascript"></script>
 <script src="<?= base_url("assets/js/utils/app.dom.js") ?>" type="text/javascript"></script>
-
-<?php if ($this->uri->segment(1) == 'Editarpuntos' && $this->uri->segment(2) =='puntos'):?>
-    <script src="<?= base_url("assets/plugins/jquery/jquery.min.js") ?>"></script>
-    <script src="<?= base_url('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
-    <script src="<?= base_url('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
-    <script src="<?= base_url("assets/js/modules/editar_puntos.js?v" . validarEnProduccion()) ?>"></script>
-<?php endif ?>
-
 
 <!-- COLVIs PARA MOSTRAR U OCULTAR COLUMNAS -->
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> -->
