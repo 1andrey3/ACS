@@ -57,7 +57,7 @@ $(document).ready(function() {
         $("#banda option[value="+ banda +"]").attr("selected",true);
         $("#tecnologia option[value="+ tecnologia +"]").attr("selected",true);
         const estacion = document.querySelector('#estacion');
-        console.log(x.childNodes[5].innerHTML);
+        console.log(estacionCampo);
       })
     }
     console.log(tomarDatos);

@@ -27,11 +27,7 @@
     <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
     
 </head>
-
-<body data-base="<?= base_url() ?>">
-
     <!-- Sidebar -->
-
     <div class="style_container_slide w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-large boton_cerrar">
             <img class="logo2" src="<?= base_url('assets/images/logo2.png') ?>" alt="cerrar">
