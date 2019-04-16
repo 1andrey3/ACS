@@ -31,16 +31,17 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles_footer.css'); ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
+    <!-- JQUERY -->
+    <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+    
+
     <!-- Estilos para el modal de creación de apertura -->
     <?php if ($this->uri->segment(1) == 'Vm' && $this->uri->segment(2) == 'index') :?>
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/proceso_apertura_vm.css') ?>">
     <?php endif ?>
+
 </head>
-
-<body data-base="<?= base_url() ?>">
-
     <!-- Sidebar -->
-
     <div class="style_container_slide w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-large boton_cerrar">
             <img class="logo2" src="<?= base_url('assets/images/logo2.png') ?>" alt="cerrar">
@@ -50,6 +51,7 @@
         <a href="<?= base_url('Vm/index') ?>" class='w3-bar-item w3-button'><i class="fa fa-edit"></i>Actividades</a>
         <?php if ($this->uri->segment(2) == 'principal' && $_SESSION['role'] == "administrador") : ?>
         <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion de usuarios</a>
+        <a href="<?= base_url('Welcome/creacionGrupoVM') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> grupoVM</a>
       <?php endif ?>
     </div>
     <!-- FIN SIDEBAR -->
