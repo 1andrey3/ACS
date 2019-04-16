@@ -1,21 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Proceso apertura VM</title>
-</head>
-<body>
-	<div id="proceso_apertura" class="modal fade" role="dialog">
-	<div class="modal-dialog modal-md">
+	<title>Actividades</title>
+	<h1>Lista de actividades</h1>
+		<!-- <div class="aviso_actividad">
+			<p>Esta actividad proviene de la estacion:</p>
+			<span>(Estacion)</span><p>Con banda de:</p><span>(banda)</span><p>Y de tecnologia:</p><span>(tecnologia)</span>
+		</div> -->
+		<button type='button' class='apertura btn btn-primary' data-toggle='modal' data-target='#proceso_apertura'><i class='fa fa-pencil-square-o'></i></button>
+		<div class="container">
+		<div class="container-m-b-10" id="tabla_de_actividades">
+			<table class="table table-hover table-bordered table-striped dataTable_camilo fs-10" id="tabla_actividades">
+				<thead>
+					<tr>
+						<th>ID ZTE</th>
+						<th>Tipo de trabajo</th>
+						<th>Ingeniero_Apertura</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		</div>
+		<div id="proceso_apertura" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
-				<h3 class="modal-title" id="modal_title"></h3>
+				<h3 class="modal-title" id="modal_title">Crear apertura</h3>
 			</div>
 			<div class="modal-body">
 				<div class="container_general">
-					<div class="container-1">
-						<div class="container-id_zte">
+					<div class="contenido-1">
 							<h1>Apertura</h1>
+						<div class="container-id_zte">
 							<h2>ID ZTE</h2>
 							<input type="number" name="id_zte" id="id_zte" value="" readonly>
 						</div>
@@ -175,6 +190,3 @@
 		</div>
 		</div>
 	</div>
-</body>
-</html>
-

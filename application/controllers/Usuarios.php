@@ -60,6 +60,11 @@ public function eliminar_usuario()
   $resultado = $this->Model_gestion_usuarios->eliminar_usuario($id);
 
 }
+  //Funcion para conseguir las actividades
+  public function buscar_actividades(){
+    $data=$this->Model_gestion_usuarios->obtener_actividades();
+    echo json_encode($data);
+  }
 
 }
 ?>

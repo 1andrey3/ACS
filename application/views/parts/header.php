@@ -18,11 +18,23 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/sidebar.css?v=' . validarEnProduccion()); ?>">
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap/css/bootstrap.min.css') ?>" />
+     <!-- STYLES DATATABLES CAMILO -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/datatables_camilo.css?v=' . validarEnProduccion()); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styleModalCami.css?v=' . validarEnProduccion()); ?>">
+    <!-- STYLES  FOOTER  -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles_footer.css'); ?>">
+    <!--stylos modal loadinformation-->
+    <link rel="stylesheet" href="<?= base_url('assets/css/input_file/component.css?v=' . validarEnProduccion()) ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/css/input_file/demo.css?v=' . validarEnProduccion()) ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/plugins/font-awesome/css/font-awesome.min.css') ?>" />
     <!-- STYLES  FOOTER  -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles_footer.css'); ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
+    <!-- Estilos para el modal de creación de apertura -->
+    <?php if ($this->uri->segment(1) == 'Vm' && $this->uri->segment(2) == 'index') :?>
+    <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/proceso_apertura_vm.css') ?>">
+    <?php endif ?>
 </head>
 
 <body data-base="<?= base_url() ?>">
@@ -35,6 +47,7 @@
             <img src="<?= base_url('assets/images/espalda.png') ?>" alt="cerrar">
 
         <a href="<?= base_url('User/principal/' .$this->session->userdata('role')) ?>" class='w3-bar-item w3-button'><i class="fa fa-home"></i> Home</a>
+        <a href="<?= base_url('Vm/index') ?>" class='w3-bar-item w3-button'><i class="fa fa-edit"></i>Actividades</a>
         <?php if ($this->uri->segment(2) == 'principal' && $_SESSION['role'] == "administrador") : ?>
         <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion de usuarios</a>
       <?php endif ?>
