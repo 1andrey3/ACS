@@ -39,6 +39,10 @@
     <?php if ($this->uri->segment(1) == 'Vm' && $this->uri->segment(2) == 'index') :?>
     <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/proceso_apertura_vm.css?v=' . validarEnProduccion()) ?>">
     <?php endif ?>
+    <!-- Estilos para la vista ticket -->
+    <?php if ($this->uri->segment(1) == 'Ticket' && $this->uri->segment(2) == 'index') :?>
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/crear_ticket.css?v=' . validarEnProduccion()) ?>">
+    <?php endif ?>
 
 </head>
     <!-- Sidebar -->
@@ -49,6 +53,7 @@
 
         <a href="<?= base_url('User/principal/' .$this->session->userdata('role')) ?>" class='w3-bar-item w3-button'><i class="fa fa-home"></i> Home</a>
         <a href="<?= base_url('Vm/index') ?>" class='w3-bar-item w3-button'><i class="fa fa-edit"></i>Actividades</a>
+        <a href="<?= base_url('Ticket/index')?>" class='w3-bar-item w3-button'><i class="fa fa-edit" ></i>Tickets</a>
         <?php if ($this->uri->segment(2) == 'principal' && $_SESSION['role'] == "administrador") : ?>
         <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion de usuarios</a>
         <a href="<?= base_url('Welcome/creacionGrupoVM') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> grupoVM</a>
