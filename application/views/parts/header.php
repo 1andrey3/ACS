@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
     <!-- Estilos para el modal de creación de apertura -->
     <?php if ($this->uri->segment(1) == 'Vm' && $this->uri->segment(2) == 'index') :?>
-    <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/proceso_apertura_vm.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/proceso_apertura_vm.css?v=' . validarEnProduccion()) ?>">
     <?php endif ?>
 </head>
 
