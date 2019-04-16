@@ -32,7 +32,7 @@
 							<h1>Apertura</h1>
 						<div class="container-id_zte">
 							<h2>ID ZTE</h2>
-							<input type="number" name="id_zte" id="id_zte" value="" readonly>
+							<input type="number" name="id_zte" id="id_zte" value="2458987452" readonly>
 						</div>
 						<div class="Estacion">
 							<h2>Estación:</h2>
@@ -53,6 +53,10 @@
 						<div class="Estado_VM">
 							<h2>Estado de VM</h2>
 							<select name="estado_vm" id="estado_vm">
+								<option>Activo</option>
+								<option>Cerrado</option>
+								<option>Pendiente apertura</option>
+								<option>Rechazado</option>
 							</select>
 						</div>
 						<div class="Motivo_del_estado">
