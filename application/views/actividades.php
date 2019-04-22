@@ -13,9 +13,19 @@
 						<th>ID ZTE</th>
 						<th>Tipo de trabajo</th>
 						<th>Ingeniero_Apertura</th>
+						<th>Estado</th>
+						<th>Resumen</th>
 					</tr>
 				</thead>
-				<tbody></tbody>
+				<tbody>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th><a href="EstadosVM"><button>clicked</button></a></th>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 		</div>
