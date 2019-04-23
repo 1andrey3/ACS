@@ -18,6 +18,7 @@
       <th>Ingeniero Creador De G</th>
       <th>Incidente</th>
       <th>Tomar Datos</th>
+      <th>Ver Estado</th>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +37,7 @@
         <td id ="ths"> <?php echo $row['Ingeniero_CreadorG'] ?></td>
         <td id ="ths"> <?php echo $row['Incidente'] ?></td>
         <td><button class="btn btn-info" data-toggle="modal" data-target="#myModal" id ="tomarDatos">tomar</button></td>
+        <td><button class="btn btn-info"> </button></td>
       </tr>
     <?php endforeach ?>
   </tbody>

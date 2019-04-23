@@ -78,7 +78,7 @@
     <div>
         ESTADO:
         <div class="contenedor_opciones">
-            <li class="boton_control">Punto De Control</li>
+            <li class="boton_control" active >Punto De Control</li>
             <li class="boton_cierre">Cierre</li>
         </div>
     </div>
