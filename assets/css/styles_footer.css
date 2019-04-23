@@ -6,7 +6,7 @@
    background-color: #084c6f;
    color: #d2c9c9;
    text-align: center;
-   height:8%;
+   height: 5%;
    font-size: 110%;
    font-family:serif;
 }
@@ -16,7 +16,7 @@
 
 .footerF .margenDelFooter{
    margin-top:2%;
-   
+
 }
 @media screen and (width: 360px) and (height: 640px){
   .footerF{
@@ -41,7 +41,7 @@
       margin-top: -1%;
       font-size: 20px;
       padding: 2px 0 0 0px;
-    }   
+    }
 }
 @media screen and (width: 1280px) and (height: 800px) {
    .footerF p {

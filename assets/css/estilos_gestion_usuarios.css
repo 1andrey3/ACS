@@ -5,7 +5,6 @@ body{
 position: relative;
 }
 .footerF{
-  position: absolute;
   left: 0px;
 /*
 width: -webkit-fill-available;
