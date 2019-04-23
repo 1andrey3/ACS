@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#tablaForm').DataTable( {
     } );
 
-  }); 
+  });
 //llamado a la base de datos
 (async function load(){
   async function baseDatos(url){
@@ -17,10 +17,8 @@ $(document).ready(function() {
   const btn = document.querySelector('#formulario');
   btn.addEventListener('click', () => {
       const estacion = document.querySelector('#estacion');
-      console.log(estacion);
       estacion.addEventListener('click', () => {
         const estacion2 = estacion.value;
-        console.log(estacion2);
         for(let x = 0; x < objEstacion.length; x++){
           if(objEstacion[x].id_estacion == estacion2){
             document.getElementById('rSkype').value = objEstacion[x].region;
@@ -60,4 +58,3 @@ $(document).ready(function() {
         console.log(estacionCampo);
       })
     }
-    console.log(tomarDatos);

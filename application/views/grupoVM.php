@@ -4,7 +4,7 @@
 <ul class="nav nav-tabs" style="margin: 30px 0px;">
     <li class="active"><a data-toggle="tab" href="#id_section_engineering">Sitios</a></li>
     <div style="display:flex; float:right;">
-      <button data-toggle="modal" data-target="#myModal" id="formulario" href="#" class="boton_acces dt-button btn-cami_warning " target="_blank" style="width: 214px;">Nuevo Sitio</button>
+      <button data-toggle="modal" data-target="#nuevo_sitio" id="formulario" href="#" class="boton_acces dt-button btn-cami_warning " target="_blank" style="width: 214px;">Nuevo Sitio</button>
     </div>
 </ul>
 
@@ -42,7 +42,7 @@
         <td id ="ths"> <?php echo $row['Ingeniero_CreadorG'] ?></td>
         <td id ="ths"> <?php echo $row['Incidente'] ?></td>
         <td id ="ths">
-          <button class="btn btn-info" data-toggle="modal" data-target="#myModal" id ="tomarDatos"><i class="fa fa-copy"></i></button>
+          <button class="btn btn-info" data-toggle="modal" data-target="#nuevo_sitio" id ="tomarDatos"><i class="fa fa-copy"></i></button>
           <a href="<?= base_url('Vm/index') ?>" class='btn btn-info'><i class="fa fa-list-alt"></i></i></a>
         </td>
       </tr>
@@ -50,86 +50,14 @@
   </tbody>
 </table>
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+<!-- <div id="nuevo_sitio" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h2 class="modal-title" align="center">Formulario creacion de Grupo de VM</h2>
       </div>
-      <form action="<?= base_url('Welcome/datosGrupoVM') ?>" method="POST" >
-      <div class="modal-body formularioVM" id="">
-        <div class="botonesLaterales">
-        </div>
-        <div class="contenidoVM">
-          <div class="navAsig">
-          <ul class="nav nav-pills">
-            <li class="active lin"><a href="#">Creación De Ventanas</a></li>
-          </ul>
-          </div>
-          <div>
-            <label for="">Fecha y hora de solicitud:</label><br>
-            <input type="text" class="form-control" name="fechaSolicitud" id="fechaSolicitud">
-          </div>
-          <div>
-            <label for="">ID_Site_Access:</label><br>
-            <input type="number" class="form-control" name="idSiteAccess" id="idSiteAccess">
-          </div>
-          <div class="form-group">
-            <label for="">ESTACIÓN:</label><br>
-            <select class="form-control"  name="estacion" id ="estacion">
-            <?php foreach($estacion as $key=>$row):?>
-            <option id ="posicion" value="<?php echo $key+1 ?>"><?php echo $row['sitio']?> </option>
-            <?php endforeach ?>
-          </select>
-          </div>
-          <div class="form-group">
-          <label for="">TECNOLOGIA:</label><br>
-          <select class="form-control" name="tecnologia" id="tecnologia">
-          <?php foreach($tecnologia as $key=>$row):?>
-            <option  value="<?php echo $key ?>"><?php echo $row['nombre_tecnologia'] ?></option>
-            <?php endforeach ?>
-          </select>
-          </div>
-          <div class="form-group">
-          <label for="">Banda:</label><br>
-          <select class="form-control" name="banda" id="banda">
-          <?php foreach( $banda as $key=>$row):?>
-            <option value="<?php echo $key+1 ?>"><?php echo $row['nombre_banda'] ?></option>
-            <?php endforeach ?>
-          </select>
-          </div>
-          <div>
-            <label for="">Ente Ejecutor:</label><br>
-            <input type="text" class="form-control" name="enteEjecutor" id="enteEjecutor">
-          </div>
-          <div>
-            <label for="">Nombre Del Grupo Skype</label><br>
-            <input type="text" class="form-control" name="nGSkype" id="nGSkype">
-          </div>
-          <div class="form-group">
-            <label for="">Regional Skype</label><br>
-            <input type="text" class="form-control rsky" name="rSkype" id="rSkype">
-          </select>
-          </div>
-          <div>
-            <label for="">Persona Que Solicita</label><br>
-            <input type="text" class="form-control" name="personaSolicita" id="personaSolicita">
-          </div>
-          <div>
-            <label for="">Hora De Apertura</label><br>
-            <input type="text" class="form-control" name="horaApertura" id="horaApertura">
-          </div>
-          <div>
-            <label for="">Ingeniero Creador De G</label><br>
-            <input type="text" class="form-control" name="ingenieroCreadorG" id="ingenieroCreadorG">
-          </div>
-          <div>
-            <label for="">Incidente</label><br>
-            <input type="text" class="form-control" name="incidente" id="incidente">
-          </div>
-        </div>
-      </div>
+
       <div class="modal-footer footerModal">
         <div clas="divEnvio">
           <input type="submit" class="btn btn-danger divBtnEnvio">
@@ -140,4 +68,132 @@
     </div>
   </div>
 </div>
-<script src="<?=base_url('assets/js/grupoVM.js') ?>"></script>
+
+ -->
+
+
+
+  <div id="nuevo_sitio" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+          <h3 class="modal-title" id="modal_title">Crear Nuevo Sitio</h3>
+        </div>
+        <div class="modal-body">
+          <div class="container_general">
+            <div class="contenido-1">
+                <form action="<?= base_url('Welcome/datosGrupoVM') ?>" method="POST" >
+                  <div class="row">
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Fecha y hora de solicitud:</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input type="text" class="form-control"  name="fechaSolicitud" id="fechaSolicitud" aria-describedby="basic-addon1">
+                      </div>
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">ID_Site_Access:</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><strong>ID</strong></span>
+                        <input type="number" class="form-control" name="idSiteAccess" id="idSiteAccess" aria-describedby="basic-addon1">
+                      </div>
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Estación:</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-list-alt"></i></span>
+                        <select class="form-control"  name="estacion" id ="estacion">
+                          <?php foreach($estacion as $key=>$row):?>
+                          <option id ="posicion" value="<?php echo $key+1 ?>"><?php echo $row['sitio']?> </option>
+                          <?php endforeach ?>
+                        </select>
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Tecnología:</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-flash"></i></span>
+                        <select class="form-control" name="tecnologia" id="tecnologia">
+                          <?php foreach($tecnologia as $key=>$row):?>
+                            <option  value="<?php echo $key ?>"><?php echo $row['nombre_tecnologia'] ?></option>
+                          <?php endforeach ?>
+                        </select>
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Banda:</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-scale"></i></span>
+                        <select class="form-control" name="banda" id="banda">
+                          <?php foreach( $banda as $key=>$row):?>
+                            <option value="<?php echo $key+1 ?>"><?php echo $row['nombre_banda'] ?></option>
+                          <?php endforeach ?>
+                        </select>
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Ente Ejecutor:</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-text-size"></i></span>
+                        <input type="text" class="form-control" name="enteEjecutor" id="enteEjecutor" aria-describedby="basic-addon1">
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Nombre Del Grupo Skype</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-font"></i></span>
+                        <input type="text" class="form-control" name="nGSkype" id="nGSkype" aria-describedby="basic-addon1">
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Regional Skype</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-map-marker"></i></span>
+                        <input type="text" class="form-control rsky" name="rSkype" id="rSkype" aria-describedby="basic-addon1">
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Persona Que Solicita</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" class="form-control" name="personaSolicita" id="personaSolicita" aria-describedby="basic-addon1">
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Hora De Apertura</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-time"></i></span>
+                        <input type="text" class="form-control" name="horaApertura" id="horaApertura" aria-describedby="basic-addon1">
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Ingeniero Creador De Grupo</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" class="form-control"  name="ingenieroCreadorG" id="ingenieroCreadorG" aria-describedby="basic-addon1">
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4 mt-20">
+                      <label for="">Incidente</label><br>
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
+                        <input type="text" class="form-control"  name="incidente" id="incidente" aria-describedby="basic-addon1">
+                      </div>
+                    </div><!-- /.col-lg-4 -->
+                  </div><!-- /.row -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer modal-dialog modal-lg">
+      <button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
+      <button type="submit" class="btn btn-success" ><i class='glyphicon glyphicon-send'></i>&nbsp;Crear</button>
+    </div>
+    </form>
+  </div>
+
+
+  <script src="<?=base_url('assets/js/grupoVM.js') ?>"></script>
