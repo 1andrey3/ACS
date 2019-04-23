@@ -8,6 +8,7 @@
     <!--   ICONO PAGINA    -->
     <link rel="icon" href="<?= base_url('assets/images/title_icon.png'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/css/sweet-alert.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/css/reset.min.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/css/stylelogin.css'); ?>">
     <script type="text/javascript" src="<?= base_url('assets/plugins/jquery.min.js'); ?>"></script>

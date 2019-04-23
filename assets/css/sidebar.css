@@ -570,3 +570,8 @@ a.aling_text_center:hover{
 	background: #084c6f;
 }
 .w3-border-pale-blue,.w3-hover-border-pale-blue:hover{border-color:#e7ffff!important}
+
+.general-container {
+  margin: 0% 5% !important;
+  width: auto !important;
+}

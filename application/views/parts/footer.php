@@ -152,11 +152,6 @@
 <?php endif ?>
 
 
-
-
-<script src="<?= base_url("assets/js/utils/app.global.js?v=1.2") ?>" type="text/javascript"></script>
-<script src="<?= base_url("assets/js/utils/app.dom.js") ?>" type="text/javascript"></script>
-
 <!-- COLVIs PARA MOSTRAR U OCULTAR COLUMNAS -->
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> -->
 

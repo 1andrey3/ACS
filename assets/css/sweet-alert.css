@@ -1,0 +1,14 @@
+.sweet-alert p {
+    margin: auto;
+}
+.sweet-alert .sa-confirm-button-container button {
+    display: flex !important;
+    justify-content: center;
+}
+
+input#id_usuario:focus::-webkit-input-placeholder {
+    color: white;
+}
+input#password:focus::-webkit-input-placeholder {
+    color: white;
+}
