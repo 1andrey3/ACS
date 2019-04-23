@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
     <!-- JQUERY -->
     <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
-    
+
 
     <!-- Estilos para el modal de creación de apertura -->
     <?php if ($this->uri->segment(1) == 'Vm' && $this->uri->segment(2) == 'index') :?>
@@ -99,3 +99,4 @@
             })(document, window, 0);
         });
     </script>
+    <div class="container general-container" style="min-height: 88vh;">

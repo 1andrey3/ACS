@@ -1,24 +1,29 @@
 <?php
 ?>
 <link rel="stylesheet" href="<?= base_url('assets/css/stylegrupoVM.css'); ?>">
-<button class="btn btn-primary" data-toggle="modal" data-target="#myModal" id ="formulario">formulario</button><br><br>
+<ul class="nav nav-tabs" style="margin: 30px 0px;">
+    <li class="active"><a data-toggle="tab" href="#id_section_engineering">Sitios</a></li>
+    <div style="display:flex; float:right;">
+      <button data-toggle="modal" data-target="#myModal" id="formulario" href="#" class="boton_acces dt-button btn-cami_warning " target="_blank" style="width: 214px;">Nuevo Sitio</button>
+    </div>
+</ul>
+
 <table class="table table-striped dataTable_camilo" id ="tablaForm">
   <thead>
     <tr>
-      <th>ID_Site_Access</th>
+      <th>ID Site Access</th>
       <th>Fecha y hora de solicitud</th>
-      <th>ESTACIÓN</th>
-      <th>TECNOLOGIA</th>
+      <th>Estación</th>
+      <th>Tecnología</th>
       <th>Banda</th>
-      <th>Tipo De Trabajo</th>
+      <th>Tipo de Trabajo</th>
       <th>Ente Ejecutor</th>
-      <th>Nombre Del Grupo Skype</th>
+      <th>Nombre del Grupo Skype</th>
       <th>Persona Que Solicita</th>
-      <th>Hora De Apertura</th>
+      <th>Hora de Apertura</th>
       <th>Ingeniero Creador De G</th>
       <th>Incidente</th>
-      <th>Tomar Datos</th>
-      <th>Ver Estado</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -36,14 +41,16 @@
         <td id ="ths"> <?php echo $row['Hora_apertura'] ?></td>
         <td id ="ths"> <?php echo $row['Ingeniero_CreadorG'] ?></td>
         <td id ="ths"> <?php echo $row['Incidente'] ?></td>
-        <td><button class="btn btn-info" data-toggle="modal" data-target="#myModal" id ="tomarDatos">tomar</button></td>
-        <td><button class="btn btn-info"> </button></td>
+        <td id ="ths">
+          <button class="btn btn-info" data-toggle="modal" data-target="#myModal" id ="tomarDatos" title="Tomar Datos"><i class="fa fa-copy"></i></button>
+          <a href="<?= base_url('Vm/index') ?>" title ="Estados" class='btn btn-info'><i class="fa fa-list-alt"></i></i></a>
+        </td>
       </tr>
     <?php endforeach ?>
   </tbody>
 </table>
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -132,5 +139,5 @@
     </form>
     </div>
   </div>
-</div>    
+</div>
 <script src="<?=base_url('assets/js/grupoVM.js') ?>"></script>
