@@ -66,7 +66,7 @@
 }
 </style>
 <body>
-    <form action="">
+    <form action="EstadosActividades" method="POST">
         <div class="contenedor">
             <div class="DivControl">
                 <div class="pEstado">
@@ -83,11 +83,11 @@
                     </div>
                     <div>
                         <label for="">Tecnologia</label><br>
-                        <input type="text"><br>
+                        <input type="text" name="Tecnologia"><br>
                     </div>
                     <div>
                         <label for="">Banda</label><br>
-                        <input type="text"><br>
+                        <input type="text" name="banda"><br>
                     </div>
                     <div>
                         <label for="">Tipo De Trabajo</label><br>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="estadoVM">
                     <p>estado de VM:</p>
-                    <select name="" id="selectorEstado" class="form-group">
+                    <select name="selectorEstado" id="selectorEstado" class="form-group">
                         <option value="puntoControl">Punto de Control</option>
                         <option value="cierre">Cierre</option>
                     </select>
@@ -104,31 +104,31 @@
             </div>
             <div class = "dos">
                 <label for="">RET:</label>
-                <select name="" id="" class="form-control">
+                <select name="RET" id="" class="form-control">
                     <option value="">a</option>
                 </select><br>
                 <label for="">Ampleación Dualbeam:</label>
-                <select name="" id="" class="form-control">
+                <select name="ampleaciónDual" id="" class="form-control">
                     <option value="">b</option>
                 </select><br>
                 <label for="">Selectores Dualbeam</label>
-                <select name="" id="" class="form-control">
+                <select name="selectorDual" id="" class="form-control">
                     <option value="">c</option>
                 </select><br>
                 <label for="">Tipo de Solución:</label>
-                <select name="" id="" class="form-control">
+                <select name="tipoSolucion" id="" class="form-control">
                     <option value="">d</option>
                 </select>
             </div>
             <div class="DivInfo">
                 <label> Ingeniero Control: </label>
-                <select name="" id="" class="form-control">
+                <select name="ingenieroControl" id="" class="form-control">
                     <option value="">a</option>
                     <option value="" >c</option>
                     <option value="" >b</option>
                 </select> <br>
                 <label for="">Hora Revisión:</label>
-                <input type="text" placeholder="ej: 14:00"> <br><br>
+                <input type="text" name="horaRevision" placeholder="ej: 14:00"> <br><br>
                 <label for="">Comentarios Punto De Control:</label><br>
                 <textarea name="" id="" cols="20" rows="5">        
                 </textarea><br>
@@ -136,45 +136,45 @@
             </div>
             <div class="resultado">
                 <label for="">Estado VM</label>
-                <select name="" id="" class="form-control">
+                <select name="estadoVM" id="" class="form-control">
                     <option value=""></option>
                 </select><br>     
                 <label for="">Sub-estado</label>
-                <select name="" id="" class="form-control">
+                <select name="subEstado" id="" class="form-control">
                     <option value=""></option>
                 </select><br>  
                 <label for="">al iniciar VM se encontro:</label>
-                <select name="" id="" class="form-control">
+                <select name="inicioVM" id="" class="form-control">
                     <option value=""></option>
                 </select><br>  
                 <label for="">¿Presento falla final?</label>
-                <select name="" id="" class="form-control">
+                <select name="fallaFinal" id="" class="form-control">
                     <option value=""></option>
                 </select><br> 
                 <label for="">Tipo de falla Final</label>
-                <select name="" id="" class="form-control">
+                <select name="tipoFalla" id="" class="form-control">
                     <option value=""></option>
                 </select><br>  
                 <label for="">VISTAS_MM</label>
-                <select name="" id="" class="form-control">
+                <select name="vistasMM" id="" class="form-control">
                     <option value=""></option>
                 </select><br>
             </div>
             <div class="resultado2">
                 <label for="">Estado Notificación</label>
-                <select name="" id="" class="form-control">
+                <select name="estadoNotificacion" id="" class="form-control">
                     <option value=""></option>
                 </select><br>  
                 <label for="">Ingeniero Cierre</label>
-                <select name="" id="" class="form-control">
+                <select name="ingenieroCierre" id="" class="form-control">
                     <option value=""></option>
                 </select><br>  
                 <label for="">Hora Atención Cierre</label>
-                <input type="text" class="form-control">  
+                <input type="text" name="horaAtencionCierre" class="form-control">  
                 <label for="">Hora de Cierre Confirmado</label>
-                <input type="text" class="form-control"> 
+                <input type="text" name="horaConfirmacionCierre" class="form-control"> 
                 <label for="">Comentarios Cierre:</label> <br>
-                <textarea name="" id="" cols="30" rows="10">
+                <textarea  id="" name="comentariosCierre" cols="30" rows="10">
                 </textarea>  
             </div>  
             
