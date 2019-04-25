@@ -66,20 +66,20 @@
 }
 </style>
 <body>
-    <form action="EstadosActividades" method="POST">
+    <form action="<?= base_url('Welcome/estadosActividades') ?>" method="POST">
         <div class="contenedor">
             <div class="DivControl">
                 <div class="pEstado">
                     <p id="tituloControl">Punto De Control</p>
                     <div>
                         <p>ID ZTE</p><br>
-                        <input type="text" class="form-control">
+                        <input type="text" name="id_zte" class="form-control">
                     </div>
                 </div>
                 <div class="caracteristicas">
                     <div>
                         <label for="">Estación</label><br>
-                        <input type="text"><br>
+                        <input type="text" name="Estacion"><br>
                     </div>
                     <div>
                         <label for="">Tecnologia</label><br>
@@ -87,11 +87,11 @@
                     </div>
                     <div>
                         <label for="">Banda</label><br>
-                        <input type="text" name="banda"><br>
+                        <input type="text" name="Banda"><br>
                     </div>
                     <div>
                         <label for="">Tipo De Trabajo</label><br>
-                        <input type="text"><br>
+                        <input type="text" name="tipoTrabajo"><br>
                     </div>
                 </div>
                 <div class="estadoVM">
@@ -108,7 +108,7 @@
                     <option value="">a</option>
                 </select><br>
                 <label for="">Ampleación Dualbeam:</label>
-                <select name="ampleaciónDual" id="" class="form-control">
+                <select name="ampliacionDual" id="" class="form-control">
                     <option value="">b</option>
                 </select><br>
                 <label for="">Selectores Dualbeam</label>
@@ -123,59 +123,60 @@
             <div class="DivInfo">
                 <label> Ingeniero Control: </label>
                 <select name="ingenieroControl" id="" class="form-control">
-                    <option value="">a</option>
-                    <option value="" >c</option>
-                    <option value="" >b</option>
+                    <option value="1">a</option>
+                    <option value="2" >c</option>
+                    <option value="3" >b</option>
                 </select> <br>
                 <label for="">Hora Revisión:</label>
-                <input type="text" name="horaRevision" placeholder="ej: 14:00"> <br><br>
+                <input type="time" name="horaRevision" placeholder="ej: 14:00"> <br><br>
                 <label for="">Comentarios Punto De Control:</label><br>
-                <textarea name="" id="" cols="20" rows="5">        
+                <textarea name="comentarioPC" id="" cols="20" rows="5">        
                 </textarea><br>
                 <input type="submit" value="Enviar">
             </div>
             <div class="resultado">
                 <label for="">Estado VM</label>
                 <select name="estadoVM" id="" class="form-control">
-                    <option value=""></option>
+                    <option value="">cerrado</option>
                 </select><br>     
                 <label for="">Sub-estado</label>
                 <select name="subEstado" id="" class="form-control">
-                    <option value=""></option>
+                    <option value="">a</option>
                 </select><br>  
                 <label for="">al iniciar VM se encontro:</label>
                 <select name="inicioVM" id="" class="form-control">
-                    <option value=""></option>
+                    <option value="">b</option>
                 </select><br>  
                 <label for="">¿Presento falla final?</label>
                 <select name="fallaFinal" id="" class="form-control">
-                    <option value=""></option>
+                    <option value="">no</option>
                 </select><br> 
                 <label for="">Tipo de falla Final</label>
                 <select name="tipoFalla" id="" class="form-control">
-                    <option value=""></option>
+                    <option value="">ninguna</option>
                 </select><br>  
                 <label for="">VISTAS_MM</label>
                 <select name="vistasMM" id="" class="form-control">
-                    <option value=""></option>
+                    <option value="">0</option>
                 </select><br>
             </div>
             <div class="resultado2">
                 <label for="">Estado Notificación</label>
                 <select name="estadoNotificacion" id="" class="form-control">
-                    <option value=""></option>
+                    <option value="">activo</option>
                 </select><br>  
                 <label for="">Ingeniero Cierre</label>
                 <select name="ingenieroCierre" id="" class="form-control">
-                    <option value=""></option>
+                    <option value="">1</option>
                 </select><br>  
                 <label for="">Hora Atención Cierre</label>
-                <input type="text" name="horaAtencionCierre" class="form-control">  
+                <input type="time" name="horaAtencionCierre" class="form-control">  
                 <label for="">Hora de Cierre Confirmado</label>
-                <input type="text" name="horaConfirmacionCierre" class="form-control"> 
+                <input type="time" name="horaConfirmacionCierre" class="form-control"> 
                 <label for="">Comentarios Cierre:</label> <br>
                 <textarea  id="" name="comentariosCierre" cols="30" rows="10">
-                </textarea>  
+                </textarea>
+                <input type="submit" value="Enviar">  
             </div>  
             
         </div>
