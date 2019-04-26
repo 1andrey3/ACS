@@ -146,7 +146,6 @@ class Welcome extends CI_Controller
 		$datoCierre[13] = $this->input->post('horaAtencionCierre');
 		$datoCierre[14] = $this->input->post('horaConfirmacionCierre');
 		$datoCierre[15] = $this->input->post('comentariosCierre');
-
 		$this->UserTable->enviarPuntoControl($data);
 		$this->UserTable->enviarCierre($datoCierre);		
 	}

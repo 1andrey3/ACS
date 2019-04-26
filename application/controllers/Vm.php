@@ -6,11 +6,13 @@ class Vm extends CI_Controller {
   function __construct() {
     parent::__construct();
     $this->load->model('data/Dao_vm_model');
+    $this->load->model('UserTable');
   }
   public function index(){
-  	$data['title']='actividades';
-  	$this->load->view("parts/header",$data);
-    $this->load->view("actividades");
+    $data['actividades'] = $this->UserTable->tableActividades();
+    $titulo['title']='actividades';
+  	$this->load->view("parts/header",$titulo);
+    $this->load->view("actividades",$data);
     $this->load->view("parts/footer");
   }
 
@@ -24,5 +26,4 @@ class Vm extends CI_Controller {
     $this->load->view("estadosVM");
     $this->load->view("parts/footer");
   }
-  
 }
