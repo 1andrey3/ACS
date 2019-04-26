@@ -94,7 +94,8 @@
 <?php if ($this->uri->segment(1) == 'Migrar_data'): ?>
     <script src="<?= base_url('assets/js/modules/loadExcel/migrar_data.js'); ?>"></script>
 <?php endif ?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
 <?php if ($this->uri->segment(2) == 'reporte_bitacoras' && $this->session->userdata('role') == 'lider'): ?>
     <script src="<?= base_url("assets/js/modules/reporte_bitacoras.js?v=". validarEnProduccion()) ?>"></script>
     <script type="text/javascript" src="<?= base_url("assets/plugins/datatables/js/dataTables.buttons.min.js") ?>"></script>

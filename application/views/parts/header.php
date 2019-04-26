@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/sidebar.css?v=' . validarEnProduccion()); ?>">
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap/css/bootstrap.min.css') ?>" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css" />
      <!-- STYLES DATATABLES CAMILO -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/datatables_camilo.css?v=' . validarEnProduccion()); ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styleModalCami.css?v=' . validarEnProduccion()); ?>">
@@ -48,9 +50,10 @@
             <img src="<?= base_url('assets/images/espalda.png') ?>" alt="cerrar">
 
         <a href="<?= base_url('User/principal/' .$this->session->userdata('role')) ?>" class='w3-bar-item w3-button'><i class="fa fa-home"></i> Home</a>
+        <a href="<?= base_url('Sitios') ?>" class='w3-bar-item w3-button'><i class="glyphicon glyphicon-th"></i> Sitios</a>
         <a href="<?= base_url('Vm/index') ?>" class='w3-bar-item w3-button'><i class="fa fa-edit"></i>Actividades</a>
         <?php if ($this->uri->segment(2) == 'principal' && $_SESSION['role'] == "administrador") : ?>
-        <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion de usuarios</a>
+        <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion usuarios</a>
         <a href="<?= base_url('Welcome/creacionGrupoVM') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> grupoVM</a>
       <?php endif ?>
     </div>

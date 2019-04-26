@@ -8,71 +8,6 @@
     </div>
 </ul>
 
-<table class="table table-striped dataTable_camilo" id ="tablaForm">
-  <thead>
-    <tr>
-      <th>ID Site Access</th>
-      <th>Fecha y hora de solicitud</th>
-      <th>Estación</th>
-      <th>Tecnología</th>
-      <th>Banda</th>
-      <th>Ente Ejecutor</th>
-      <th>Nombre del Grupo Skype</th>
-      <th>Regional Skype</th>
-      <th>Persona Que Solicita</th>
-      <th>Hora de Apertura</th>
-      <th>Ingeniero Creador De Grupo</th>
-      <th>Incidente</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($grupoSitios as $key=>$row): ?>
-    <tr id = "trs">
-        <td id ="ths"> <?php echo $row['ID_Site_Access'] ?></td>
-        <td id ="ths"> <?php echo $row['F_H_Solicitud'] ?></td>
-        <td id ="ths"> <?php echo $row['Estacion'] ?></td>
-        <td id ="ths"> <?php echo $row['Tecnologia'] ?></td>
-        <td id ="ths"> <?php echo $row['Banda'] ?></td>
-        <td id ="ths"> <?php echo $row['Ente_ejecutor'] ?></td>
-        <td id ="ths"> <?php echo $row['Nombre_grupo_skype'] ?></td>
-        <td id ="ths"> <?php echo $row['Regional_skype'] ?></td>
-        <td id ="ths"> <?php echo $row['Persona_solicita'] ?></td>
-        <td id ="ths"> <?php echo $row['Hora_apertura'] ?></td>
-        <td id ="ths"> <?php echo $row['Ingeniero_CreadorG'] ?></td>
-        <td id ="ths"> <?php echo $row['Incidente'] ?></td>
-        <td id ="ths">
-          <button class="btn btn-info" data-toggle="modal" data-target="#nuevo_sitio" id ="tomarDatos"><i class="fa fa-copy"></i></button>
-          <a href="<?= base_url('Vm/index') ?>" class='btn btn-info'><i class="fa fa-list-alt"></i></i></a>
-        </td>
-      </tr>
-    <?php endforeach ?>
-  </tbody>
-</table>
-<!-- Modal -->
-<!-- <div id="nuevo_sitio" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title" align="center">Formulario creacion de Grupo de VM</h2>
-      </div>
-
-      <div class="modal-footer footerModal">
-        <div clas="divEnvio">
-          <input type="submit" class="btn btn-danger divBtnEnvio">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-
- -->
-
-
-
   <div id="nuevo_sitio" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -197,6 +132,52 @@
     </div>
     </form>
   </div>
+<div id="section_tabla_sitios">
+  <table class="table table-striped dataTable_camilo" id ="tabla_sitios">
+  <thead>
+    <tr>
+      <th>ID Site Access</th>
+      <th>Fecha y hora de solicitud</th>
+      <th>Estación</th>
+      <th>Tecnología</th>
+      <th>Banda</th>
+      <th>Ente Ejecutor</th>
+      <th>Nombre del Grupo Skype</th>
+      <th>Regional Skype</th>
+      <th>Persona Que Solicita</th>
+      <th>Hora de Apertura</th>
+      <th>Ingeniero Creador De Grupo</th>
+      <th>Incidente</th>
+      <th></th>
+    </tr>
+  </thead>
+</table>
+</div>
+<script>
+  var base_url = "<?= base_url(); ?>";
+  console.log(base_url);
 
+  $(document).ready(function() {
+        $('#tabla_sitios').DataTable( {
+            "processing": true,
+            "serverSide": true,
+            "ajax": base_url + "Sitios/mostrar_sitios",
+            "columns": [
+            { "data": "ID_Site_Access" },
+            { "data": "F_H_Solicitud" },
+            { "data": "Estacion" },
+            { "data": "Banda" },
+            { "data": "Tecnologia" },
+            { "data": "Ente_ejecutor" },
+            { "data": "Nombre_grupo_skype" },
+            { "data": "Regional_skype" },
+            { "data": "Persona_solicita" },
+            { "data": "Hora_apertura" },
+            { "data": "Ingeniero_CreadorG" },
+            { "data": "Incidente" }
+        ]
+        } );
+    } );
+</script>
 
-  <script src="<?=base_url('assets/js/grupoVM.js') ?>"></script>
+  <!-- <script src="<?=base_url('assets/js/grupoVM.js') ?>"></script> -->

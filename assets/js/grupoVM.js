@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  $( "#fechaSolicitud" ).datetimepicker({
+    dateFormat: 'yy-mm-dd',
+    timeFormat: 'HH:mm:ss'});
+    $('#horaApertura').timepicker({'timeFormat':'H:i'});
     $('#tablaForm').DataTable( {
     } );
 
@@ -15,9 +19,9 @@ $(document).ready(function() {
 
   //boton Formulario
   const btn = document.querySelector('#formulario');
-  btn.addEventListener('click', () => {
+  btn.addEventListener('blur', () => {
       const estacion = document.querySelector('#estacion');
-      estacion.addEventListener('click', () => {
+      estacion.addEventListener('change', () => {
         const estacion2 = estacion.value;
         for(let x = 0; x < objEstacion.length; x++){
           if(objEstacion[x].id_estacion == estacion2){
@@ -26,7 +30,18 @@ $(document).ready(function() {
         }
       });
     });
+
+    $( "#fechaSolicitud" ).on('click', function() {
+      $("#ui-datepicker-div").css("z-index", "9999");
+    });
 })();
+console.log("aqui");
+$('#nuevo_sitio').on('shown.bs.modal', function (e) {
+  console.log("holaaa");
+})
+$('#nuevo_sitio').on('shown.bs.modal', function () {
+  alert('hi');
+});
   //botones 'tomar'
     const tomarDatos = document.querySelectorAll('#tomarDatos');
     for(tomar of tomarDatos){
@@ -35,7 +50,7 @@ $(document).ready(function() {
         console.log(boton.innerHTML);
         const d = boton.parentNode;
         const x = d.parentNode;
-        console.log(x.childNodes[5].innerHTML);
+        // console.log(x.childNodes[5].innerHTML);
 
         // enviar datos de la tabla a el modal
         //  document.getElementById('idSiteAccess').value = parseInt(x.childNodes[1].innerHTML);
@@ -51,8 +66,8 @@ $(document).ready(function() {
         document.getElementById('ingenieroCreadorG').value = x.childNodes[21].innerHTML;
         document.getElementById('incidente').value = x.childNodes[23].innerHTML;
 
-        $("#estacion option[value="+ estacionCampo +"]").attr("selected",true);
-        $("#banda option[value="+ banda +"]").attr("selected",true);
+        $("#estacion option[value='" + estacionCampo + "']").attr("selected",true);
+        $("#banda option[value=" + banda + "]").attr("selected",true);
         $("#tecnologia option[value="+ tecnologia +"]").attr("selected",true);
         const estacion = document.querySelector('#estacion');
         console.log(estacionCampo);
