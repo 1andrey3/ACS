@@ -73,7 +73,7 @@
                     <p id="tituloControl">Punto De Control</p>
                     <div>
                         <p>ID ZTE</p><br>
-                        <input type="text" name="id_zte" class="form-control">
+                        <input type="number" name="id_zte" class="form-control">
                     </div>
                 </div>
                 <div class="caracteristicas">
@@ -124,8 +124,8 @@
                 <label> Ingeniero Control: </label>
                 <select name="ingenieroControl" id="" class="form-control">
                     <option value="1">a</option>
-                    <option value="2" >c</option>
-                    <option value="3" >b</option>
+                    <option value="2">c</option>
+                    <option value="3">b</option>
                 </select> <br>
                 <label for="">Hora Revisión:</label>
                 <input type="time" name="horaRevision" placeholder="ej: 14:00"> <br><br>
