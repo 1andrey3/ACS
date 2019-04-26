@@ -42,8 +42,8 @@
         <td id ="ths"> <?php echo $row['Ingeniero_CreadorG'] ?></td>
         <td id ="ths"> <?php echo $row['Incidente'] ?></td>
         <td id ="ths">
-          <button class="btn btn-info" data-toggle="modal" data-target="#myModal" id ="tomarDatos"><i class="fa fa-copy"></i></button>
-          <a href="<?= base_url('Vm/index') ?>" class='btn btn-info'><i class="fa fa-list-alt"></i></i></a>
+          <button class="btn btn-info" data-toggle="modal" data-target="#myModal" id ="tomarDatos" title="Tomar Datos"><i class="fa fa-copy"></i></button>
+          <a href="<?= base_url('Vm/index') ?>" title ="Estados" class='btn btn-info'><i class="fa fa-list-alt"></i></i></a>
         </td>
       </tr>
     <?php endforeach ?>
