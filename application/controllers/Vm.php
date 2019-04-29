@@ -11,8 +11,8 @@ class Vm extends CI_Controller {
   public function index(){
     $data['actividades'] = $this->UserTable->tableActividades();
     $titulo['title']='actividades';
-  	$this->load->view("parts/header",$titulo);
-    $this->load->view("actividades",$data);
+    $this->load->view("parts/header",$titulo);
+    $this->load->view("actividades", $data); 
     $this->load->view("parts/footer");
   }
 
@@ -22,6 +22,9 @@ class Vm extends CI_Controller {
   }
   public function EstadosVM(){
     $data['title']='Estados';
+    $datos['zteID'] = $_POST['zteID']; 
+    $datos['estadosJS'] = $_POST['estadosJS'];
+    var_dump($datos);
     $this->load->view("parts/header",$data);
     $this->load->view("estadosVM");
     $this->load->view("parts/footer");

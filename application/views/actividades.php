@@ -18,13 +18,17 @@
 					</tr>
 				</thead>
 				<tbody>
+				<?php foreach($actividades as $key=>$row): ?>
 					<tr>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th><a href="EstadosVM"><button>clicked</button></a></th>
+						<th><?php echo $row['id_apertura'] ?></th>
+						<th><?php echo $row['id_tipo_trabajo'] ?></th>
+						<th><?php echo $row['ap_ingeniero_apertura'] ?></th>
+						<th><?php echo $row['estado_vm'] ?></th>
+						<th>
+							<button id ="resumen" class="btn btn-info"><i class="fa fa-file"></i></button>
+						</th>
 					</tr>
+				<?php endforeach ?>
 				</tbody>
 			</table>
 		</div>
@@ -204,3 +208,24 @@
 		</div>
 		</div>
 	</div>
+	<script>
+	const resumen = document.querySelectorAll('#resumen');
+	for(tomar of resumen){
+		tomar.addEventListener('click', (evt) =>{
+			let boton = evt.target;
+			boton = boton.parentNode.parentNode;
+			const id = boton.firstElementChild.innerHTML;
+			const estado = boton.childNodes[7].innerHTML;
+			console.log(estado);
+
+			const envio = new FormData();
+			envio.append('zteID', id);
+			envio.append('estadosJS', estado);
+			fetch('estadosVM',{
+				method:'POST',
+				body: envio
+			}).then(data => data.text()
+			)
+		})
+	}
+	</script>

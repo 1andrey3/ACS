@@ -82,7 +82,7 @@ class Model_gestion_usuarios extends CI_Model
     $query=$this->db->query("
       SELECT
         aper.id_apertura,
-        aper.id_zte AS id_zte,
+        aper.id_vm_zte AS id_vm_zte,
         aper.id_tipo_trabajo,
         aper.id_usuario,
         CONCAT(tt.nombre_tipo_trabajo) AS tipo_de_trabajo,
