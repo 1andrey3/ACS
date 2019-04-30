@@ -209,23 +209,29 @@
 		</div>
 	</div>
 	<script>
-	const resumen = document.querySelectorAll('#resumen');
-	for(tomar of resumen){
-		tomar.addEventListener('click', (evt) =>{
-			let boton = evt.target;
-			boton = boton.parentNode.parentNode;
-			const id = boton.firstElementChild.innerHTML;
-			const estado = boton.childNodes[7].innerHTML;
-			console.log(estado);
-
-			const envio = new FormData();
-			envio.append('zteID', id);
-			envio.append('estadosJS', estado);
-			fetch('estadosVM',{
-				method:'POST',
-				body: envio
-			}).then(data => data.text()
-			)
-		})
-	}
+		const resumen = document.querySelectorAll('#resumen');
+		function vista(){
+			window.open('EstadosVM');
+		}
+		async function Datos(resumen){
+			for(tomar of resumen){
+				tomar.addEventListener('click', async(evt) =>{
+					let boton = evt.target;
+					boton = boton.parentNode.parentNode;
+					const id = boton.firstElementChild.innerHTML;
+					const estado = boton.childNodes[7].innerHTML;
+					console.log(estado);
+					const envio = new FormData();
+					envio.append('zteID', id);
+					envio.append('estadosJS', estado);
+					await fetch('estadosVM',{
+						method:'POST',
+						body: envio
+					}).then(data => data.text()
+					);
+					await vista();
+				})
+			}
+		};
+		Datos(resumen);	
 	</script>

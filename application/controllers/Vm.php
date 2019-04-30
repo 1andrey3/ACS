@@ -22,11 +22,11 @@ class Vm extends CI_Controller {
   }
   public function EstadosVM(){
     $data['title']='Estados';
-    $datos['zteID'] = $_POST['zteID']; 
-    $datos['estadosJS'] = $_POST['estadosJS'];
+    $datos[0] = $_POST['zteID']; 
+    $datos[1] = $_POST['estadosJS'];
     var_dump($datos);
-    $this->load->view("parts/header",$data);
-    $this->load->view("estadosVM");
-    $this->load->view("parts/footer");
+    // $this->load->view("parts/header",$data);
+    // $this->load->view("estadosVM");
+    // $this->load->view("parts/footer");
   }
 }
