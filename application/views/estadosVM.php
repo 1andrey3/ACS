@@ -26,13 +26,14 @@
                     <div>
                         <label for="">Tipo De Trabajo</label><br>
                         <input type="text" name="tipoTrabajo" value="<?php echo $ente ?>"><br>
+                        <input type="text" id="estados" value="<?php echo $estado ?>"><br>
                     </div>
                 </div>
                 <div class="estadoVM">
                     <p>estado de VM:</p>
                     <select name="selectorEstado" id="selectorEstado" class="form-group">
-                        <option value="puntoControl">Punto de Control</option>
-                        <option value="cierre">Cierre</option>
+                        <option id ="puntoControl" value="puntoControl">Punto de Control</option>
+                        <option id="cierre" value="cierre">Cierre</option>
                     </select>
                 </div>
             </div>
