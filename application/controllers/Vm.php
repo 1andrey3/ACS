@@ -20,13 +20,20 @@ class Vm extends CI_Controller {
     $data=$this->Dao_vm_model->obtener_tipos_trabajo();
     echo json_encode($data);
   }
+  
   public function EstadosVM(){
     $data['title']='Estados';
-    $datos[0] = $_POST['zteID']; 
-    $datos[1] = $_POST['estadosJS'];
-    var_dump($datos);
-    // $this->load->view("parts/header",$data);
-    // $this->load->view("estadosVM");
-    // $this->load->view("parts/footer");
+    $datos['id_zte'] = $_POST['id_zte_form']; 
+    $datos['estado'] = $_POST['estado_form'];
+    $grupoVM = $this->UserTable->gruposDeVM($datos['id_zte']);
+    $datos['estacion'] = $grupoVM[0]['Estacion'];
+    $datos['tecnologia'] = $grupoVM[0]['Tecnologia'];
+    $datos['banda'] = $grupoVM[0]['Banda'];
+    $datos['ente'] = $grupoVM[0]['Ente_ejecutor'];
+    // var_dump($datos);
+    $this->load->view("parts/header",$data);
+    $this->load->view("estadosVM", $datos);
+    $this->load->view("parts/footer");
   }
+  
 }

@@ -1,5 +1,10 @@
 	<title>Actividades</title>
 	<h1>Lista de actividades</h1>
+						<form action="estadosVM" method="POST">
+							<div id="envios_VM">
+								<input type="text" id="id_zte_form" name="id_zte_form">
+								<input type="text" id="estado_form" name="estado_form">
+							</div>
 		<!-- <div class="aviso_actividad">
 			<p>Esta actividad proviene de la estacion:</p>
 			<span>(Estacion)</span><p>Con banda de:</p><span>(banda)</span><p>Y de tecnologia:</p><span>(tecnologia)</span>
@@ -20,12 +25,13 @@
 				<tbody>
 				<?php foreach($actividades as $key=>$row): ?>
 					<tr>
-						<th><?php echo $row['id_apertura'] ?></th>
+						<th><?php echo $row['id_vm_zte'] ?></th>
 						<th><?php echo $row['id_tipo_trabajo'] ?></th>
 						<th><?php echo $row['ap_ingeniero_apertura'] ?></th>
 						<th><?php echo $row['estado_vm'] ?></th>
 						<th>
-							<button id ="resumen" class="btn btn-info"><i class="fa fa-file"></i></button>
+							<button type="submit" id="resumen" class="btn btn-info"><i class="fa fa-file"></i></button>
+							</form>
 						</th>
 					</tr>
 				<?php endforeach ?>
@@ -209,29 +215,23 @@
 		</div>
 	</div>
 	<script>
-		const resumen = document.querySelectorAll('#resumen');
-		function vista(){
-			window.open('EstadosVM');
-		}
-		async function Datos(resumen){
-			for(tomar of resumen){
-				tomar.addEventListener('click', async(evt) =>{
-					let boton = evt.target;
-					boton = boton.parentNode.parentNode;
-					const id = boton.firstElementChild.innerHTML;
-					const estado = boton.childNodes[7].innerHTML;
-					console.log(estado);
-					const envio = new FormData();
-					envio.append('zteID', id);
-					envio.append('estadosJS', estado);
-					await fetch('estadosVM',{
-						method:'POST',
-						body: envio
-					}).then(data => data.text()
-					);
-					await vista();
+		// mini-formulario para envio de datos
+		document.getElementById('envios_VM').style.display = 'none';
+		
+		$(document).ready( function () {
+			const table = $('#tabla_actividades').DataTable();
+			const data = table.rows().data();
+			console.log(data);
+			const btn_resumen = document.querySelectorAll('#resumen');
+			console.log(btn_resumen);
+			btn_resumen.forEach( (evt, index) =>{		
+				evt.addEventListener('click', (a)=>{
+					const id_zte = data[index][0];
+					const estado = data[index][3];
+					console.log(estado,id_zte);
+					document.getElementById('estado_form').value = estado;
+					document.getElementById('id_zte_form').value = id_zte;
 				})
-			}
-		};
-		Datos(resumen);	
+			});	
+		});
 	</script>
