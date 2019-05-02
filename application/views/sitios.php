@@ -1,3 +1,54 @@
+<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Sitios extends CI_Controller
+{
+	function __construct()
+	{
+        parent::__construct();
+
+
+	}
+
+	public function index() {
+        $this->load->library('Datatables');
+        // $dt_authors = new Datatables;
+        $dt_authors = $this->datatables->init();
+        // $dt_authors->select('*')->from('sitio');
+        $dt_authors->select('g.ID_Site_Access, g.F_H_Solicitud  , est.sitio AS Estacion, b.nombre_banda AS Banda, t.nombre_tecnologia AS Tecnologia, g.Ente_ejecutor, g.Nombre_grupo_skype, g.Regional_skype, g.Persona_solicita, g.Hora_apertura, g.Ingeniero_CreadorG, g.Incidente')->from('sitio g')->join('estacion est', 'g.Estacion = est.id_estacion')->join('banda b', 'g.Banda = b.id_banda')->join('tecnologia t', 'g.Tecnologia = t.id_tecnologia');
+        $dt_authors
+            ->style(array(
+            'class' => 'table table-striped table-bordered',
+            ))
+            ->column('ID_Site_Access', 'ID_Site_Access')
+            ->column('F_H_Solicitud', 'F_H_Solicitud')
+            ->column('Estacion', 'Estacion')
+            ->column('Banda', 'Banda')
+            ->column('Tecnologia', 'Tecnologia')
+            ->column('Ente_ejecutor', 'Ente_ejecutor')
+            ->column('Nombre_grupo_skype', 'Nombre_grupo_skype')
+            ->column('Regional_skype', 'Regional_skype')
+            ->column('Persona_solicita', 'Persona_solicita')
+            ->column('Ingeniero_CreadorG', 'Ingeniero_CreadorG')
+            ->column('Incidente', 'Incidente');
+        $this->datatables->create('dt_authors', $dt_authors);
+
+
+		$data['title'] = "Listado de sitios";
+ 		$this->load->view('parts/header',$data);
+		$this->load->view('sitios');
+		$this->load->view('parts/footer');
+    }
+
+    public function mostrar_sitios() {
+        $data = $this->Formulario->recorridoGrupoVM();
+        echo json_encode(array('data' => $data));
+    }
+}
+cz
 <?php
 ?>
 <link rel="stylesheet" href="<?= base_url('assets/css/stylegrupoVM.css'); ?>">
@@ -7,71 +58,6 @@
       <button data-toggle="modal" data-target="#nuevo_sitio" id="formulario" href="#" class="boton_acces dt-button btn-cami_warning " target="_blank" style="width: 214px;">Nuevo Sitio</button>
     </div>
 </ul>
-
-<table class="table table-striped dataTable_camilo" id ="tablaForm">
-  <thead>
-    <tr>
-      <th>ID Site Access</th>
-      <th>Fecha y hora de solicitud</th>
-      <th>Estación</th>
-      <th>Tecnología</th>
-      <th>Banda</th>
-      <th>Ente Ejecutor</th>
-      <th>Nombre del Grupo Skype</th>
-      <th>Regional Skype</th>
-      <th>Persona Que Solicita</th>
-      <th>Hora de Apertura</th>
-      <th>Ingeniero Creador De Grupo</th>
-      <th>Incidente</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($grupoSitios as $key=>$row): ?>
-    <tr id = "trs">
-        <td id ="ths"> <?php echo $row['ID_Site_Access'] ?></td>
-        <td id ="ths"> <?php echo $row['F_H_Solicitud'] ?></td>
-        <td id ="ths"> <?php echo $row['Estacion'] ?></td>
-        <td id ="ths"> <?php echo $row['Tecnologia'] ?></td>
-        <td id ="ths"> <?php echo $row['Banda'] ?></td>
-        <td id ="ths"> <?php echo $row['Ente_ejecutor'] ?></td>
-        <td id ="ths"> <?php echo $row['Nombre_grupo_skype'] ?></td>
-        <td id ="ths"> <?php echo $row['Regional_skype'] ?></td>
-        <td id ="ths"> <?php echo $row['Persona_solicita'] ?></td>
-        <td id ="ths"> <?php echo $row['Hora_apertura'] ?></td>
-        <td id ="ths"> <?php echo $row['Ingeniero_CreadorG'] ?></td>
-        <td id ="ths"> <?php echo $row['Incidente'] ?></td>
-        <td id ="ths">
-          <button class="btn btn-info" data-toggle="modal" data-target="#myModal" id ="tomarDatos" title="Tomar Datos"><i class="fa fa-copy"></i></button>
-          <a href="<?= base_url('Vm/index') ?>" title ="Estados" class='btn btn-info'><i class="fa fa-list-alt"></i></i></a>
-        </td>
-      </tr>
-    <?php endforeach ?>
-  </tbody>
-</table>
-<!-- Modal -->
-<!-- <div id="nuevo_sitio" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title" align="center">Formulario creacion de Grupo de VM</h2>
-      </div>
-
-      <div class="modal-footer footerModal">
-        <div clas="divEnvio">
-          <input type="submit" class="btn btn-danger divBtnEnvio">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-
- -->
-
-
 
   <div id="nuevo_sitio" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
@@ -197,6 +183,79 @@
     </div>
     </form>
   </div>
+  <?php
+  $this->datatables->generate('dt_authors');
+  $this->datatables->jquery('dt_authors');
+?>
+<!-- <div id="section_tabla_sitios">
+  <table class="table table-striped dataTable_camilo" id ="tabla_sitios">
+  <thead>
+    <tr>
+      <th>ID Site Access</th>
+      <th>Fecha y hora de solicitud</th>
+      <th>Estación</th>
+      <th>Tecnología</th>
+      <th>Banda</th>
+      <th>Ente Ejecutor</th>
+      <th>Nombre del Grupo Skype</th>
+      <th>Regional Skype</th>
+      <th>Persona Que Solicita</th>
+      <th>Hora de Apertura</th>
+      <th>Ingeniero Creador De Grupo</th>
+      <th>Incidente</th>
+      <th></th>
+    </tr>
+  </thead>
+</table>
+</div> -->
+<script>
+  var base_url = "<?= base_url(); ?>";
 
+  $(document).ready(function() {
+        $('#tabla_sitios').DataTable( {
+        //     "processing": true,
+        //     "serverSide": true,
+        //     "ajax": base_url + "Sitios/mostrar_sitios",
+        //     "columns": [
+        //     { "data": "ID_Site_Access" },
+        //     { "data": "F_H_Solicitud" },
+        //     { "data": "Estacion" },
+        //     { "data": "Banda" },
+        //     { "data": "Tecnologia" },
+        //     { "data": "Ente_ejecutor" },
+        //     { "data": "Nombre_grupo_skype" },
+        //     { "data": "Regional_skype" },
+        //     { "data": "Persona_solicita" },
+        //     { "data": "Hora_apertura" },
+        //     { "data": "Ingeniero_CreadorG" },
+        //     { "data": "Incidente" }
+        // ]
+        processing: true,
+        serverSide: true,
+        ordering: false,
+        searching: true,
+        deferRender:    true,
+        ajax: base_url + "Sitios/mostrar_sitios",
+        columns: [
+            { "data": "ID_Site_Access" },
+            { "data": "F_H_Solicitud" },
+            { "data": "Estacion" },
+            { "data": "Banda" },
+            { "data": "Tecnologia" },
+            { "data": "Ente_ejecutor" },
+            { "data": "Nombre_grupo_skype" },
+            { "data": "Regional_skype" },
+            { "data": "Persona_solicita" },
+            { "data": "Hora_apertura" },
+            { "data": "Ingeniero_CreadorG" },
+            { "data": "Incidente" }
+        ],
+        // scrollY: 200,
+        // scroller: {
+        //     loadingIndicator: true
+        // }
+        } );
+    } );
+</script>
 
-  <script src="<?=base_url('assets/js/grupoVM.js') ?>"></script>
+  <!-- <script src="<?=base_url('assets/js/grupoVM.js') ?>"></script> -->
