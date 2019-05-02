@@ -18,7 +18,11 @@ class Vm extends CI_Controller {
     $data=$this->Dao_vm_model->obtener_tipos_trabajo();
     echo json_encode($data);
   }
-  
+  public function EstadosVM(){
+    $data['title']='Estados';
+    $this->load->view("parts/header",$data);
+    $this->load->view("estadosVM");
+    $this->load->view("parts/footer");
+  }
   
 }
-?>
