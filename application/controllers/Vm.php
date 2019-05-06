@@ -37,8 +37,39 @@ class Vm extends CI_Controller {
   }
   public function llamadoSitio(){
     $id_zte = $_POST['id_zte_data'];
-    $data = $this->UserTable->estados_modal_actividades($id_zte);
+    $data = $this->UserTable->modal_Actividades($id_zte);
     echo json_encode($data);
   }
-  
+  public function nuevaActividad(){
+    $modal_nueva_actividad[0] = $_POST['id_zte'];
+    $modal_nueva_actividad[1] = $_POST['estado_vm'];
+    $modal_nueva_actividad[2] = $_POST['motivo_estado'];
+    $modal_nueva_actividad[3] = $_POST['ing_apertura'];
+    $modal_nueva_actividad[4] = $_POST['inicio_p'];
+    $modal_nueva_actividad[5] = $_POST['fin_p'];
+    $modal_nueva_actividad[6] = $_POST['tec_afec'];
+    $modal_nueva_actividad[7] = $_POST['bandas_afec'];
+    $modal_nueva_actividad[8] = $_POST['per_sol'];
+    $modal_nueva_actividad[9] = $_POST['ent_ejec'];
+    $modal_nueva_actividad[10] = $_POST['fm_nok'];
+    $modal_nueva_actividad[11] = $_POST['fm_claro'];
+    $modal_nueva_actividad[12] = $_POST['telef_fm'];
+    $modal_nueva_actividad[13] = $_POST['wp'];
+    $modal_nueva_actividad[14] = $_POST['crq'];
+    $modal_nueva_actividad[15] = $_POST['id_rf_tool'];
+    $modal_nueva_actividad[16] = $_POST['bsc_name'];
+    $modal_nueva_actividad[17] = $_POST['rnc_name'];
+    $modal_nueva_actividad[18] = $_POST['serv_mss'];
+    $modal_nueva_actividad[19] = $_POST['int_back'];
+    $modal_nueva_actividad[20] = $_POST['reg_clu'];
+    $modal_nueva_actividad[21] = $_POST['vist_mm'];
+    $modal_nueva_actividad[22] = $_POST['hor_ate'];
+    $modal_nueva_actividad[23] = $_POST['hor_real'];
+    $modal_nueva_actividad[24] = $_POST['contratista'];
+    $modal_nueva_actividad[25] = $_POST['coment'];
+    $modal_nueva_actividad[26] = $_POST['tipo_trabajo'];
+    $data = $this->UserTable->insertar_actividades($modal_nueva_actividad);
+    var_dump($modal_nueva_actividad);
+    header('location:index');
+  }
 }
