@@ -32,19 +32,14 @@
     <!-- STYLES  FOOTER  -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles_footer.css'); ?>">
 
-<<<<<<< HEAD
     <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
     <!-- JQUERY -->
     <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
-
-=======
->>>>>>> 90b133b99d43fd4ae19d9db184c98809e4314529
 
         <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
         <!-- JQUERY -->
         <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
 
-<<<<<<< HEAD
     <?php if ($this->uri->segment(1) == 'Ticket_remedy') : ?>
       <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/accessFormu.css') ?>">
       <script src="<?=base_url('assets/js/incidenteRemedy.js') ?>" charset="utf-8"></script>
@@ -53,8 +48,6 @@
 
     <?php endif ?>
 
-</head>
-=======
 
         <!-- Estilos para el modal de creación de apertura -->
         <?php if ($this->uri->segment(1) == 'Vm' && $this->uri->segment(2) == 'index') : ?>
@@ -62,7 +55,6 @@
         <?php endif ?>
 
     </head>
->>>>>>> 90b133b99d43fd4ae19d9db184c98809e4314529
     <!-- Sidebar -->
     <div class="style_container_slide w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-large boton_cerrar">
