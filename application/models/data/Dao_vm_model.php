@@ -8,7 +8,7 @@ class Dao_vm_model extends CI_Model {
 	}
 	/*public function obtener_actividades_sitio($id_site){
 		$query=$this->db->query("
-			SELECT 
+			SELECT
 			gv.ID_Site_Access,
 			gv.
 			")
@@ -23,6 +23,6 @@ class Dao_vm_model extends CI_Model {
 		return $query->result();
 	}
 
-	
+
 
 }

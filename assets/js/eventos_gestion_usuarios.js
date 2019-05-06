@@ -12,6 +12,7 @@ $('.boton_modificar').click(function() {
   $(this).addClass('modificado');
   $('.boton_crear').removeClass('modificado');
   $('.crear').removeClass(`ver_flex`);
+  $('.crear').css(`display`,`none`);
   $('.modificar').css(`display`,`block`);
 
 });

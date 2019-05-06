@@ -93,6 +93,7 @@ class Welcome extends CI_Controller
 		$this->load->view('grupoVM');
 		$this->load->view('parts/footer');
 	}
+
 	function tablaJson(){
 		$tabla = $this->Formulario->recorridoEstacion();
 		echo json_encode($tabla);
@@ -121,5 +122,35 @@ class Welcome extends CI_Controller
 			$data['tipo'] = 'error';
 			$this->load->view('login',$data);
 		}
+	}
+	function estadosActividades(){
+
+		$data[0] = $this->input->post('id_zte');
+		$data[1] = $this->input->post('ingenieroControl');
+		$data[2] = $this->input->post('horaRevision');
+		$data[3] = $this->input->post('comentarioPC');
+
+		
+		$datoCierre[0] = $this->input->post('id_zte');
+		$datoCierre[1] = $this->input->post('RET');
+		$datoCierre[2] = $this->input->post('ampliacionDual');
+		$datoCierre[3] = $this->input->post('selectorDual');
+		$datoCierre[4] = $this->input->post('tipoSolucion');
+		$datoCierre[5] = $this->input->post('estadoVM');
+		$datoCierre[6] = $this->input->post('subEstado');
+		$datoCierre[7] = $this->input->post('inicioVM');
+		$datoCierre[8] = $this->input->post('fallaFinal');
+		$datoCierre[9] = $this->input->post('tipoFalla');
+		$datoCierre[10] = $this->input->post('vistasMM');
+		$datoCierre[11] = $this->input->post('estadoNotificacion');
+		$datoCierre[12] = $this->input->post('ingenieroCierre');
+		$datoCierre[13] = $this->input->post('horaAtencionCierre');
+		$datoCierre[14] = $this->input->post('horaConfirmacionCierre');
+		$datoCierre[15] = $this->input->post('comentariosCierre');
+
+		$this->UserTable->enviarPuntoControl($data);
+		$this->UserTable->enviarCierre($datoCierre);
+		var_dump($datoCierre);
+				
 	}
 }
