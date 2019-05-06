@@ -32,10 +32,21 @@
     <!-- STYLES  FOOTER  -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles_footer.css'); ?>">
 
+    <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
+    <!-- JQUERY -->
+    <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
 
         <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
         <!-- JQUERY -->
         <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+
+    <?php if ($this->uri->segment(1) == 'Ticket_remedy') : ?>
+      <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/accessFormu.css') ?>">
+      <script src="<?=base_url('assets/js/incidenteRemedy.js') ?>" charset="utf-8"></script>
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/datetimepicker-master/build/jquery.datetimepicker.min.css'); ?>">
+      <script src="<?= base_url("assets/plugins/datetimepicker-master/build/jquery.datetimepicker.full.min.js") ?>"></script>
+
+    <?php endif ?>
 
 
         <!-- Estilos para el modal de creación de apertura -->
