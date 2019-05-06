@@ -32,4 +32,17 @@ class UserTable extends CI_Model{
          $grupoVM = $this->db->query("SELECT Estacion, Tecnologia, Banda,Ente_ejecutor FROM sitio WHERE id_vm_zte='$data'");
          return $grupoVM->result_array();
     } 
+    public function estados_modal_actividades($data){ 
+        // var_dump('<br>'. $data);
+         $grupoVM = $this->db->query("SELECT s.id_vm_zte, e.sitio as Estacion, t.nombre_tecnologia as Tecnologia, b.nombre_banda as Banda, tt.nombre_tipo_trabajo as Ente_ejecutor
+         FROM sitio s
+         INNER JOIN estacion e ON s.Estacion = e.id_estacion
+         INNER JOIN tecnologia t ON s.Tecnologia = t.id_tecnologia
+         INNER JOIN banda b ON s.Banda = b.id_banda
+         INNER JOIN actividad a ON a.id_vm_zte = s.id_vm_zte
+         INNER JOIN tipo_trabajo tt ON tt.id_tipo_trabajo = a.id_tipo_trabajo
+         WHERE s.id_vm_zte = '$data'");
+         return $grupoVM->result_array();
+    } 
+
 }

@@ -25,7 +25,7 @@ class Vm extends CI_Controller {
     $data['title']='Estados';
     $datos['id_zte'] = $_POST['id_zte_form']; 
     $datos['estado'] = $_POST['estado_form'];
-    $grupoVM = $this->UserTable->gruposDeVM($datos['id_zte']);
+    $grupoVM = $this->UserTable->estados_modal_actividades($datos['id_zte']);
     $datos['estacion'] = $grupoVM[0]['Estacion'];
     $datos['tecnologia'] = $grupoVM[0]['Tecnologia'];
     $datos['banda'] = $grupoVM[0]['Banda'];
@@ -34,6 +34,11 @@ class Vm extends CI_Controller {
     $this->load->view("parts/header",$data);
     $this->load->view("estadosVM", $datos);
     $this->load->view("parts/footer");
+  }
+  public function llamadoSitio(){
+    $id_zte = $_POST['id_zte_data'];
+    $data = $this->UserTable->estados_modal_actividades($id_zte);
+    echo json_encode($data);
   }
   
 }

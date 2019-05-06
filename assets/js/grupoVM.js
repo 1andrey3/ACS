@@ -1,8 +1,7 @@
-$(document).ready(function() {
-    $('#tablaForm').DataTable( {
-    } );
+  const tabla = $('#tablaForm').DataTable();
+  const filas = tabla.row().data();
+  console.log(filas);
 
-  }); 
 //llamado a la base de datos
 (async function load(){
   async function baseDatos(url){
@@ -61,3 +60,4 @@ $(document).ready(function() {
       })
     }
     console.log(tomarDatos);
+    

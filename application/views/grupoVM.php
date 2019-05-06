@@ -11,7 +11,7 @@
 <table class="table table-striped dataTable_camilo" id ="tablaForm">
   <thead>
     <tr>
-      <th>ID Site Access</th>
+      <th>ID VM Zte</th>
       <th>Fecha y hora de solicitud</th>
       <th>Estación</th>
       <th>Tecnología</th>
@@ -72,7 +72,7 @@
             <input type="text" class="form-control" name="fechaSolicitud" id="fechaSolicitud">
           </div>
           <div>
-            <label for="">ID_Site_Access:</label><br>
+            <label for="">ID_vm_zte:</label><br>
             <input type="number" class="form-control" name="idSiteAccess" id="idSiteAccess">
           </div>
           <div class="form-group">

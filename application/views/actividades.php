@@ -52,23 +52,23 @@
 							<h1>Apertura</h1>
 						<div class="container-id_zte">
 							<h2>ID ZTE</h2>
-							<input type="number" name="id_zte" id="id_zte" value="2458987452" readonly>
+							<input type="number" name="id_zte" id="id_zte" value="">
 						</div>
 						<div class="Estacion">
 							<h2>Estación:</h2>
-							<input type="text" name="estacion" id="estacion" value="" readonly>
+							<input readonly type="text" name="estacion" id="estacion" value="">
 						</div>
 						<div class="Tecnologia">
 							<h2>Tecnología:</h2>
-							<input type="text" name="tecnologia" id="tecnologia" value="" readonly="">
+							<input type="text" readonly name="tecnologia" id="tecnologia" value="">
 						</div>
 						<div class="Banda">
 							<h2>Banda:</h2>
-							<input type="text" name="banda" id="banda" value="" readonly>
+							<input type="text" readonly name="banda" id="banda" value="">
 						</div>
 						<div class="Tipo_trabajo">
 							<h2>Tipo de trabajo</h2>
-							<input type="text" name="tipo_trabajo" id="tipo_trabajo" value="" readonly>
+							<input type="text" readonly name="tipo_trabajo" id="tipo_trabajo" value="">
 						</div>
 						<div class="Estado_VM">
 							<h2>Estado de VM</h2>
@@ -82,7 +82,7 @@
 						<div class="Motivo_del_estado">
 							<h3>Motivo del estado</h3>
 							<select name="motivo_estado">
-							
+
 							</select>
 						</div>
 						<div class="Ingeniero_apertura">
@@ -98,7 +98,7 @@
 							<div class="container_programado">
 								<div class="Programacion_site">
 									<h3>DATOS SITE ACCESS:</h3>
-									<input type="number" name="datos_sa" id="datos_sa" readonly>
+									<input type="number" name="datos_sa" id="datos_sa">
 									<h3>Inicio Programado SA</h3>
 									<input type="date" name="inicio_p" id="inicio_p">
 									<h3>Fin Programado SA</h3>
@@ -118,7 +118,7 @@
 							</div>
 							<div class="Perso_solici">
 								<h3>Persona que solicita la VM LC</h3>
-								<input type="text" name="per_sol" id="per_sol" readonly>
+								<input type="text" name="per_sol" id="per_sol">
 							</div>
 							<div class="Ente_ejecut">
 								<h3>Ente Ejecutor</h3>
@@ -128,55 +128,55 @@
 							</div>
 							<div class="Fm_nokia">
 								<h3>FM Nokia</h3>
-								<input type="text" name="fm_nok" id="fm_nok" readonly>
+								<input type="text" name="fm_nok" id="fm_nok">
 							</div>
 							<div class="Fm_claro">
 								<h3>FM Claro</h3>
-								<input type="text" name="fm_claro" id="fm_claro" readonly>
+								<input type="text" name="fm_claro" id="fm_claro">
 							</div>
 							<div class="Tel_fm">
 								<h3>Teléfono FM</h3>
-								<input type="number" name="telef_fm" id="telef_fm" readonly>
+								<input type="number" name="telef_fm" id="telef_fm">
 							</div>
 							<div class="WP">
 								<h3>WP</h3>
-								<input type="number" name="wp" id="wp" readonly>
+								<input type="number" name="wp" id="wp">
 							</div>
 							<div class="CRQ">
 								<h3>CRQ</h3>
-								<input type="text" name="crq" id="crq" readonly>
+								<input type="text" name="crq" id="crq">
 							</div>
 							<div class="ID_RF_TOOL">
 								<h3>ID_RF_TOOL</h3>
-								<input type="text" name="id_rf_tool" id="id_rf_tool" readonly>
+								<input type="text" name="id_rf_tool" id="id_rf_tool">
 							</div>
 							<div class="BSC_NAME">
 								<h3>BSC_NAME</h3>
-								<input type="text" name="bsc_name" id="bsc_name" readonly>
+								<input type="text" name="bsc_name" id="bsc_name">
 							</div>
 							<div class="RNC_NAME">
 								<h3>RNC_NAME</h3>
-								<input type="text" name="rnc_name" id="rnc_name" readonly>
+								<input type="text" name="rnc_name" id="rnc_name">
 							</div>
 							<div class="servidor_mss">
 								<h3>Servidor MSS</h3>
-								<input type="text" name="serv_mss" readonly>
+								<input type="text" name="serv_mss">
 							</div>
 							<div class="inte_backo">
 								<h3>Integrador y/o backoffice</h3>
-								<input type="text" name="int_back" id="int_back" readonly>
+								<input type="text" name="int_back" id="int_back">
 							</div>
 							<div class="region_clust">
 								<h3>Regional_Cluster</h3>
-								<input type="text" name="reg_clu" id="reg_clu" readonly>
+								<input type="text" name="reg_clu" id="reg_clu">
 							</div>
 							<div  class="lider_cua">
 								<h3>Lider de Cuadrilla_VM</h3>
-								<input type="text" name="lid_cua" id="lid_cua" readonly>
+								<input type="text" name="lid_cua" id="lid_cua">
 							</div>
 							<div class="tele_lid_cuad">
 								<h3>Teléfono Lider de Cuadrilla</h3>
-								<input type="number" name="tel_lid_cuad" id="tel_lid_cuad" readonly>
+								<input type="number" name="tel_lid_cuad" id="tel_lid_cuad">
 							</div>
 							<div class="vistas_mm">
 								<h3>VISTAS_MM</h3>
@@ -186,11 +186,11 @@
 							</div>
 							<div class="hora_aten">
 								<h3>Hora atención VM</h3>
-								<input type="time" name="hor_ate" id="hor_ate" readonly>
+								<input type="time" name="hor_ate" id="hor_ate">
 							</div>
 							<div class="hora_ini_real_vm">
 								<h3>Hora_Inicial_Real_VM</h3>
-								<input type="time" name="hor_real" id="hor_real" readonly>
+								<input type="time" name="hor_real" id="hor_real">
 							</div>
 							<div class="Contratista">
 								<h3>Contratista</h3>
@@ -206,7 +206,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
@@ -217,7 +216,6 @@
 	<script>
 		// mini-formulario para envio de datos
 		document.getElementById('envios_VM').style.display = 'none';
-		
 		$(document).ready( function () {
 			const table = $('#tabla_actividades').DataTable();
 			const data = table.rows().data();
@@ -234,4 +232,25 @@
 				})
 			});	
 		});
+		// trae los datos de la tabla Sitio
+		function llamadoTabla(url, data){
+			const push = new FormData();
+			push.append('id_zte_data', data);
+			fetch(url,{
+				method:'POST',
+				body: push
+			}).then(data => data.text()
+			).then(data =>{
+				data = JSON.parse(data);
+				console.log(data);
+				document.getElementById('estacion').value = data[0].Estacion;
+				document.getElementById('banda').value = data[0].Banda;
+				document.getElementById('tecnologia').value = data[0].Tecnologia;
+				document.getElementById('tipo_trabajo').value = data[0].Ente_ejecutor;
+			})
+		}
+		const id_zte_modal = document.getElementById('id_zte');
+		id_zte_modal.addEventListener('change', evt =>{
+			llamadoTabla('llamadoSitio', id_zte_modal.value);	
+		})
 	</script>
