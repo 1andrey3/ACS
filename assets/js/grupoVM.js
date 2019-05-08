@@ -1,6 +1,23 @@
-  const tabla = $('#tablaForm').DataTable();
-  const filas = tabla.row().data();
-  console.log(filas);
+$(document).ready(function(){
+  $('#tablaForm').DataTable({  
+    "language": {
+      "lengthMenu": "Mostrar _MENU_ registros por pagina",
+        //"info": "Mostrando pagina _PAGE_ de _PAGES_ / Mostrados: _START_ de _END_ ",
+      "sInfo": "Mostrando: _START_ de _END_ - Total registros: _TOTAL_ ",
+      "infoEmpty": "No hay registros disponibles",
+      "infoFiltered": "(filtrada de _MAX_ registros)",
+      "loadingRecords": "Cargando...",
+      "processing": "Procesando...",
+      "search": "Buscar:",
+      "zeroRecords": "No se encontraron registros coincidentes",
+      "paginate": {
+        "next": "Siguiente",
+        "previous": "Anterior"
+      },
+    }
+  });
+});
+
 
 //llamado a la base de datos
 (async function load(){
