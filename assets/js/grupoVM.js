@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  $('#tablaForm').DataTable({  
+ 
+  const table =  $('#tablaForm').DataTable({  
     "language": {
       "lengthMenu": "Mostrar _MENU_ registros por pagina",
         //"info": "Mostrando pagina _PAGE_ de _PAGES_ / Mostrados: _START_ de _END_ ",
@@ -14,10 +15,21 @@ $(document).ready(function(){
         "next": "Siguiente",
         "previous": "Anterior"
       },
-    }
+    },
+  });
+  document.getElementById('idZteFila').style.display = 'none';
+  const data = table.rows().data();
+  console.log(data);
+  const btn_resumen = document.querySelectorAll('#vista_actividades');
+  console.log(btn_resumen);
+  btn_resumen.forEach( (evt, index) =>{		
+    evt.addEventListener('click', (a)=>{
+      const id_zte = data[index][0];
+      console.log(id_zte);
+      document.getElementById('idZteFila').value = id_zte;
+    })
   });
 });
-
 
 //llamado a la base de datos
 (async function load(){

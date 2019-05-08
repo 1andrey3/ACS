@@ -4,6 +4,7 @@
 							<div id="envios_VM">
 								<input type="text" id="id_zte_form" name="id_zte_form">
 								<input type="text" id="estado_form" name="estado_form">
+								<input type="text" id="id_apertura_estados" name="id_apertura_estados">
 							</div>
 		<!-- <div class="aviso_actividad">
 			<p>Esta actividad proviene de la estacion:</p>
@@ -16,6 +17,7 @@
 				<thead>
 					<tr>
 						<th>ID ZTE</th>
+						<th>ID Apertura</th>
 						<th>Tipo de trabajo</th>
 						<th>Ingeniero_Apertura</th>
 						<th>Estado</th>
@@ -26,6 +28,7 @@
 				<?php foreach($actividades as $key=>$row): ?>
 					<tr>
 						<th><?php echo $row['id_vm_zte'] ?></th>
+						<th><?php echo $row['id_apertura'] ?></th>
 						<th><?php echo $row['id_tipo_trabajo'] ?></th>
 						<th><?php echo $row['ap_ingeniero_apertura'] ?></th>
 						<th><?php echo $row['estado_vm'] ?></th>
@@ -218,11 +221,19 @@
 			</form>
 		</div>
 	</div>
+	<input type="text" id="id_zte_grupoVM" value="<?php echo $id_zte_grupoVM ?>">
 	<script>
 		// mini-formulario para envio de datos
 		document.getElementById('envios_VM').style.display = 'none';
+		var id_zte_grupoVM = document.getElementById('id_zte_grupoVM');
+		id_zte_grupoVM.style.display = 'none';
+		console.log(id_zte_grupoVM.value);
 		$(document).ready( function () {
-			const table = $('#tabla_actividades').DataTable();
+			const table = $('#tabla_actividades').DataTable({
+				"search": {
+      				"search": id_zte_grupoVM.value    
+   				}
+			});
 			const data = table.rows().data();
 			console.log(data);
 			const btn_resumen = document.querySelectorAll('#resumen');
@@ -230,10 +241,12 @@
 			btn_resumen.forEach( (evt, index) =>{		
 				evt.addEventListener('click', (a)=>{
 					const id_zte = data[index][0];
+					const id_apertura = data[index][1];
 					const estado = data[index][3];
-					console.log(estado,id_zte);
+					console.log(estado,id_zte,id_apertura);
 					document.getElementById('estado_form').value = estado;
 					document.getElementById('id_zte_form').value = id_zte;
+					document.getElementById('id_apertura_estados').value = id_apertura;
 				})
 			});	
 		});

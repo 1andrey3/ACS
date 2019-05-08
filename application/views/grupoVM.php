@@ -7,7 +7,8 @@
       <button data-toggle="modal" data-target="#myModal" id="formulario" href="#" class="boton_acces dt-button btn-cami_warning " target="_blank" style="width: 214px;">Nuevo Sitio</button>
     </div>
 </ul>
-
+<form action="<?= base_url('Vm/index') ?>" method="POST">
+<input type="text" id="idZteFila" name="idZteFila">
 <table class="table table-striped dataTable_camilo" id ="tablaForm">
   <thead>
     <tr>
@@ -29,7 +30,7 @@
   <tbody>
     <?php foreach ($grupoSitios as $key=>$row): ?>
     <tr id = "trs">
-        <td id ="ths"> <?php echo $row['ID_Site_Access'] ?></td>
+        <td id ="ths"> <?php echo $row['id_vm_zte'] ?></td>
         <td id ="ths"> <?php echo $row['F_H_Solicitud'] ?></td>
         <td id ="ths"> <?php echo $row['Estacion'] ?></td>
         <td id ="ths"> <?php echo $row['Tecnologia'] ?></td>
@@ -42,8 +43,9 @@
         <td id ="ths"> <?php echo $row['Ingeniero_CreadorG'] ?></td>
         <td id ="ths"> <?php echo $row['Incidente'] ?></td>
         <td id ="ths">
-          <button class="btn btn-info" data-toggle="modal" data-target="#myModal" id ="tomarDatos" title="Tomar Datos"><i class="fa fa-copy"></i></button>
-          <a href="<?= base_url('Vm/index') ?>" title ="Estados" class='btn btn-info'><i class="fa fa-list-alt"></i></i></a>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" id ="tomarDatos" title="Tomar Datos"><i class="fa fa-copy"></i></button>
+            <button  type="submit" id="vista_actividades" title ="Estados" class='btn btn-info'><i class="fa fa-list-alt"></i></i></button>
+</form>
         </td>
       </tr>
     <?php endforeach ?>

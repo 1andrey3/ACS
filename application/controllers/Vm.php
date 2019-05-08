@@ -10,6 +10,11 @@ class Vm extends CI_Controller {
   }
   public function index(){
     $data['actividades'] = $this->UserTable->tableActividades();
+    if($_POST){
+      $data['id_zte_grupoVM'] = $_POST['idZteFila'];
+    } else{
+      $data['id_zte_grupoVM'] = '';
+    }
     $titulo['title']='actividades';
     $this->load->view("parts/header",$titulo);
     $this->load->view("actividades", $data); 
@@ -24,6 +29,7 @@ class Vm extends CI_Controller {
   public function EstadosVM(){
     $data['title']='Estados';
     $datos['id_zte'] = $_POST['id_zte_form']; 
+    $datos['id_apertura_estados'] = $_POST['id_apertura_estados']; 
     $datos['estado'] = $_POST['estado_form'];
     $grupoVM = $this->UserTable->estados_modal_actividades($datos['id_zte']);
     $datos['estacion'] = $grupoVM[0]['Estacion'];

@@ -14,6 +14,7 @@
                     <div>
                         <label for="">Estación</label><br>
                         <input type="text" name="Estacion" value="<?php echo $estacion ?>"><br>
+                        <input style="display:none" type="text" name="id_apertura_estados" value="<?php echo $id_apertura_estados ?>"><br>
                     </div>
                     <div>
                         <label for="">Tecnologia</label><br>

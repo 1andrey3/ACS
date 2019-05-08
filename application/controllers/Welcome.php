@@ -128,6 +128,7 @@ class Welcome extends CI_Controller
 		$data[1] = $this->input->post('ingenieroControl');
 		$data[2] = $this->input->post('horaRevision');
 		$data[3] = $this->input->post('comentarioPC');
+		$data[4] = $this->input->post('selectorEstado');
 
 		
 		$datoCierre[0] = $this->input->post('id_zte');
@@ -146,6 +147,7 @@ class Welcome extends CI_Controller
 		$datoCierre[13] = $this->input->post('horaAtencionCierre');
 		$datoCierre[14] = $this->input->post('horaConfirmacionCierre');
 		$datoCierre[15] = $this->input->post('comentariosCierre');
+		$datoCierre[16] = $this->input->post('selectorEstado');
 		$this->UserTable->enviarPuntoControl($data);
 		$this->UserTable->enviarCierre($datoCierre);		
 	}
