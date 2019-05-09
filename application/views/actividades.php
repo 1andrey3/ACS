@@ -46,19 +46,21 @@
 							</div>
 							<div class="Estacion">
 								<h2>Estación:</h2>
-								<input readonly type="text" name="estacion" id="estacion" value="">
+								<div class="input-group">
+									<input readonly type="text" name="estacion" id="estacion" value="">
+								</div>
 							</div>
 							<div class="Tecnologia">
 								<h2>Tecnología:</h2>
-								<input type="text" name="tecnologia" id="tecnologia" value="">
+								<input readonly type="text" name="tecnologia" id="tecnologia" value="">
 							</div>
 							<div class="Banda">
 								<h2>Banda:</h2>
-								<input type="text" name="banda" id="banda" value="">
+								<input readonly type="text" name="banda" id="banda" value="">
 							</div>
 							<div class="Tipo_trabajo">
 								<h2>Tipo de trabajo</h2>
-								<input type="text" name="tipo_trabajo" id="tipo_trabajo" value="">
+								<input readonly type="text" name="tipo_trabajo" id="tipo_trabajo" value="">
 							</div>
 							<div class="Estado_VM">
 								<h2>Estado de VM</h2>
@@ -67,37 +69,36 @@
 									<option value="cierre">Punto de control</option>
 								</select>
 							</div>
-							<div class="Motivo_del_estado">
-								<h3>Motivo del estado</h3>
-								<select name="motivo_estado">
-									<option>actualizacion</option>
-									<option>cambio</option>
-									<option>nada</option>
-								</select>
-							</div>
-							<div class="Ingeniero_apertura">
-								<h3>Ingeniero_Apertura</h3>
-								<select name="ing_apertura" id="ing_apertura">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-								</select>
-							</div>
-							<div class="img_ga">
-								<img src="" name="ga" id="ga">
-							</div>
-							<div class="container_2">
-								<div class="container_programado">
+							<div class="cuerpo">
+								<div class="Motivo_del_estado">
+									<h3>Motivo del estado</h3>
+									<select name="motivo_estado" class="form-control">
+										<option>actualizacion</option>
+										<option>cambio</option>
+										<option>nada</option>
+									</select>
+								</div>
+								<div class="Ingeniero_apertura">
+									<h3>Ingeniero_Apertura</h3>
+									<select name="ing_apertura" id="ing_apertura" class="form-control">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+								</div>								
+								<div class="container_programado_inicio">
 									<div class="Programacion_site">
 										<h3>Inicio Programado SA</h3>
-										<input type="date" name="inicio_p" id="inicio_p">
-										<h3>Fin Programado SA</h3>
-										<input type="date" name="fin_p" id="fin_p">
+										<input type="date" name="inicio_p" id="inicio_p" class="form-control">
 									</div>
+								</div>
+								<div class="container_programado_fin">
+									<h3>Fin Programado SA</h3>
+									<input type="date" name="fin_p" id="fin_p" class="form-control">
 								</div>
 								<div class="Tecno_afec">
 									<h3>Tecnologias Afectadas</h3>
-									<select name="tec_afec" id="tec_afec">
+									<select name="tec_afec" id="tec_afec" class="form-control">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -105,19 +106,19 @@
 								</div>
 								<div class="Bandas_afec">
 									<h3>Bandas Afectadas</h3>
-									<select name="bandas_afec" id="bandas_afec">
+									<select name="bandas_afec" id="bandas_afec" class="form-control">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
 									</select>
 								</div>
 								<div class="Perso_solici">
-									<h3>Persona que solicita la VM LC</h3>
-									<input type="text" name="per_sol" id="per_sol">
+									<h3>Psn solicitante VM</h3>
+									<input type="text" name="per_sol" id="per_sol" class="form-control">
 								</div>
 								<div class="Ente_ejecut">
 									<h3>Ente Ejecutor</h3>
-									<select name="ent_ejec" id="ent_ejec">
+									<select name="ent_ejec" id="ent_ejec" class="form-control">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -125,51 +126,51 @@
 								</div>
 								<div class="Fm_nokia">
 									<h3>FM Nokia</h3>
-									<input type="text" name="fm_nok" id="fm_nok">
+									<input type="text" name="fm_nok" id="fm_nok" class="form-control">
 								</div>
 								<div class="Fm_claro">
 									<h3>FM Claro</h3>
-									<input type="text" name="fm_claro" id="fm_claro">
+									<input type="text" name="fm_claro" id="fm_claro" class="form-control">
 								</div>
 								<div class="Tel_fm">
 									<h3>Teléfono FM</h3>
-									<input type="number" name="telef_fm" id="telef_fm">
+									<input type="number" name="telef_fm" id="telef_fm" class="form-control">
 								</div>
 								<div class="WP">
 									<h3>WP</h3>
-									<input type="number" name="wp" id="wp">
+									<input type="number" name="wp" id="wp" class="form-control">
 								</div>
 								<div class="CRQ">
 									<h3>CRQ</h3>
-									<input type="text" name="crq" id="crq">
+									<input type="text" name="crq" id="crq" class="form-control">
 								</div>
 								<div class="ID_RF_TOOL">
 									<h3>ID_RF_TOOL</h3>
-									<input type="text" name="id_rf_tool" id="id_rf_tool">
+									<input type="text" name="id_rf_tool" id="id_rf_tool" class="form-control">
 								</div>
 								<div class="BSC_NAME">
 									<h3>BSC_NAME</h3>
-									<input type="text" name="bsc_name" id="bsc_name">
+									<input type="text" name="bsc_name" id="bsc_name" class="form-control">
 								</div>
 								<div class="RNC_NAME">
 									<h3>RNC_NAME</h3>
-									<input type="text" name="rnc_name" id="rnc_name">
+									<input type="text" name="rnc_name" id="rnc_name" class="form-control">
 								</div>
 								<div class="servidor_mss">
 									<h3>Servidor MSS</h3>
-									<input type="text" name="serv_mss">
+									<input type="text" name="serv_mss" class="form-control">
 								</div>
 								<div class="inte_backo">
 									<h3>Integrador y/o backoffice</h3>
-									<input type="text" name="int_back" id="int_back">
+									<input type="text" name="int_back" id="int_back" class="form-control">
 								</div>
 								<div class="region_clust">
 									<h3>Regional_Cluster</h3>
-									<input type="text" name="reg_clu" id="reg_clu">
+									<input type="text" name="reg_clu" id="reg_clu" class="form-control">
 								</div>
 								<div class="vistas_mm">
 									<h3>VISTAS_MM</h3>
-									<select name="vist_mm" id="vist_mm">
+									<select name="vist_mm" id="vist_mm" class="form-control">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -177,15 +178,15 @@
 								</div>
 								<div class="hora_aten">
 									<h3>Hora atención VM</h3>
-									<input type="time" name="hor_ate" id="hor_ate">
+									<input type="time" name="hor_ate" id="hor_ate" class="form-control">
 								</div>
 								<div class="hora_ini_real_vm">
 									<h3>Hora_Inicial_Real_VM</h3>
-									<input type="time" name="hor_real" id="hor_real">
+									<input type="time" name="hor_real" id="hor_real" class="form-control">
 								</div>
 								<div class="Contratista">
 									<h3>Contratista</h3>
-									<select name="contratista" id="contratista">
+									<select name="contratista" id="contratista" class="form-control">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -207,7 +208,7 @@
 			</form>
 		</div>
 	</div>
-	<input type="text" id="id_zte_grupoVM" value="<?php echo $id_zte_grupoVM ?>">
+	<input  style="display:none" type="text" id="id_zte_grupoVM" value="<?php echo $id_zte_grupoVM ?>">
 	<script>
 		$(document).ready(function(){
 			listar();
@@ -240,7 +241,7 @@
 				document.getElementById('id_apertura_estados').value = data.id_apertura;
 			})
 		}
-		
+
 		// trae los datos de la tabla Sitio
 		function llamadoTabla(url, data){
 			const push = new FormData();

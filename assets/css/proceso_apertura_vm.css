@@ -1,7 +1,7 @@
 .container_general{
 	width: 898px;
 	margin-left: -15px;
-	height: 2742px;
+	height: 1352px;
 	margin-top: -35px;
 }
 .contenido-1{
@@ -101,18 +101,34 @@
 }
 .Estado_VM{
 	border: solid white;
-	margin-top: -30px;
-	width: 216px;
-	margin-left: 220px;
+    height: 90px;
+    width: 423px;
+    margin-bottom: 27px;
+    margin-left: 220px;
+    margin-top: -30px;
 }
 .Estado_VM h2{
 	font-size: 22px;
-	color: azure;
-	text-align: center;
+    text-align: center;
+    margin: 7px;
+    color: azure;
+}
+.Estado_VM select{
+	margin-left: 61px;
+    width: 299px;
+    text-align: center;
 }
 
 h1{
 	color: white;
 	font-family: Times New Roman;
 	text-align: center;
+}
+
+.cuerpo{
+	display:grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 10px;
+	padding: 0 10px;
+	
 }
