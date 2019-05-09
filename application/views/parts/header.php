@@ -18,6 +18,8 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/sidebar.css?v=' . validarEnProduccion()); ?>">
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap/css/bootstrap.min.css') ?>" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css" />
      <!-- STYLES DATATABLES CAMILO -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/datatables_camilo.css?v=' . validarEnProduccion()); ?>">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styleModalCami.css?v=' . validarEnProduccion()); ?>">
@@ -30,73 +32,80 @@
     <!-- STYLES  FOOTER  -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styles_footer.css'); ?>">
 
-    <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
-    <!-- JQUERY -->
-    <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+
+        <link rel="stylesheet" href="<?= base_url('assets/css/estilos_gestion_usuarios.css') ?>">
+        <!-- JQUERY -->
+        <script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
 
 
-    <!-- Estilos para el modal de creación de apertura -->
-    <?php if ($this->uri->segment(1) == 'Vm' && $this->uri->segment(2) == 'index') :?>
-    <link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/proceso_apertura_vm.css?v=' . validarEnProduccion()) ?>">
-    <?php endif ?>
+        <!-- Estilos para el modal de creación de apertura -->
+        <?php if ($this->uri->segment(1) == 'Vm' && $this->uri->segment(2) == 'index') : ?>
+            <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/proceso_apertura_vm.css?v=' . validarEnProduccion()) ?>">
+        <?php endif ?>
 
-</head>
+    </head>
     <!-- Sidebar -->
     <div class="style_container_slide w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-large boton_cerrar">
             <img class="logo2" src="<?= base_url('assets/images/logo2.png') ?>" alt="cerrar">
             <img src="<?= base_url('assets/images/espalda.png') ?>" alt="cerrar">
 
+
         <a href="<?= base_url('User/principal/' .$this->session->userdata('role')) ?>" class='w3-bar-item w3-button'><i class="fa fa-home"></i> Home</a>
+        <a href="<?= base_url('Sitios') ?>" class='w3-bar-item w3-button'><i class="glyphicon glyphicon-th"></i> Sitios</a>
         <a href="<?= base_url('Vm/index') ?>" class='w3-bar-item w3-button'><i class="fa fa-edit"></i>Actividades</a>
         <?php if ($this->uri->segment(2) == 'principal' && $_SESSION['role'] == "administrador") : ?>
-        <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion de usuarios</a>
+        <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion usuarios</a>
         <a href="<?= base_url('Welcome/creacionGrupoVM') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> grupoVM</a>
+        <a href="<?= base_url('cargarActividades') ?>" class='w3-bar-item w3-button'><i class="fa fa-upload"></i> Cargar Actividades</a>
       <?php endif ?>
     </div>
     <!-- FIN SIDEBAR -->
-    <div class="telmexVIP_header ">
-        <nav class="navbar navbar-inverse" role="navigation">
-            <div class="container-fluid menu_nav_header">
-                <div class="navbar-header">
-                    <!-- Page Content -->
-                    <span class="">
-                        <span id="btn_menu_lateral" class="logo_header" onclick="w3_open()"><img class="m-t-10" src="<?= base_url('assets/images/LogoZTENav.png'); ?>" style="cursor:pointer;"> </span>
-                    </span>
+    <body style="padding: 0;" data-base="<?= base_url() ?>" >
+        <div class="telmexVIP_header ">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="container-fluid menu_nav_header">
+                    <div class="navbar-header">
+                        <!-- Page Content -->
+                        <span class="">
+                            <span id="btn_menu_lateral" class="logo_header" onclick="w3_open()"><img class="m-t-10" src="<?= base_url('assets/images/LogoZTENav.png'); ?>" style="cursor:pointer;"> </span>
+                        </span>
+                    </div>
+
+
+                    <ul class="nav navbar-nav menu_nav_header">
+                        <h2 style="color: #fff;" id="hora_actualizacion" class="style_title-nav_hora"></h2>
+                    </ul>
+
+                    <ul class="nav navbar-nav menu_nav_header">
+                        <!-- <h2 class="style_title-nav"><?php echo $title ?></h2> -->
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span><b> Welcome <?php
+                                    $cargo = $this->session->userdata('role');
+                                    if ($cargo == 'lider') {
+                                        echo 'lìder ' . $this->session->userdata('name');
+                                    } else {
+                                        echo $this->session->userdata('role') . ' ' . $this->session->userdata('name');
+                                    }
+                                    ?> </b> </a></li>
+                        <li><a href="<?= base_url('User/logout') ?>"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
+                    </ul>
                 </div>
+            </nav>
+        </div>
+        <script>
+            document.addEventListener('keypress', function(e) {
+                var comb = e.keyCode;
 
-
-                <ul class="nav navbar-nav menu_nav_header">
-                    <h2 style="color: #fff;" id="hora_actualizacion" class="style_title-nav_hora"></h2>
-                </ul>
-
-                <ul class="nav navbar-nav menu_nav_header">
-                    <!-- <h2 class="style_title-nav"><?php echo $title ?></h2> -->
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span><b> Welcome <?php $cargo = $this->session->userdata('role');
-                                                                                                                        if ($cargo == 'lider') {
-                                                                                                                            echo 'lìder ' . $this->session->userdata('name');
-                                                                                                                        } else {
-                                                                                                                            echo $this->session->userdata('role') . ' ' . $this->session->userdata('name');
-                                                                                                                        } ?> </b> </a></li>
-                    <li><a href="<?= base_url('User/logout') ?>"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <script>
-        document.addEventListener('keypress', function(e) {
-            var comb = e.keyCode;
-
-            if (comb == 10 && e.ctrlKey == true) {
-                $('#btn_menu_lateral').click();
-            }
-            (function(e, t, n) {
-                var r = e.querySelectorAll("html")[0];
-                r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2")
-            })(document, window, 0);
-        });
-    </script>
-    <div class="container general-container" style="min-height: 88vh;">
+                if (comb == 10 && e.ctrlKey == true) {
+                    $('#btn_menu_lateral').click();
+                }
+                (function(e, t, n) {
+                    var r = e.querySelectorAll("html")[0];
+                    r.className = r.className.replace(/(^|\s)no-js(\s|$)/, "$1js$2")
+                })(document, window, 0);
+            });
+        </script>
+        <div class="container general-container" style="min-height: 88vh;">

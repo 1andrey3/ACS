@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CodeIgniter
  *
@@ -51,46 +52,71 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_Controller {
 
-	/**
-	 * Reference to the CI singleton
-	 *
-	 * @var	object
-	 */
-	private static $instance;
+    /**
+     * Reference to the CI singleton
+     *
+     * @var	object
+     */
+    private static $instance;
+    protected $request;
 
-	/**
-	 * Class constructor
-	 *
-	 * @return	void
-	 */
-	public function __construct()
-	{
-		self::$instance =& $this;
+    /**
+     * Class constructor
+     *
+     * @return	void
+     */
+    public function __construct() {
+        self::$instance = & $this;
 
-		// Assign all the class objects that were instantiated by the
-		// bootstrap file (CodeIgniter.php) to local class variables
-		// so that CI can run as one big super object.
-		foreach (is_loaded() as $var => $class)
-		{
-			$this->$var =& load_class($class);
-		}
+        // Assign all the class objects that were instantiated by the
+        // bootstrap file (CodeIgniter.php) to local class variables
+        // so that CI can run as one big super object.
+        foreach (is_loaded() as $var => $class) {
+            $this->$var = & load_class($class);
+        }
 
-		$this->load =& load_class('Loader', 'core');
-		$this->load->initialize();
-		log_message('info', 'Controller Class Initialized');
-	}
+        $this->load = & load_class('Loader', 'core');
+        $this->load->initialize();
+        $this->load->model('bin/Request');
+        $this->load->model('bin/DB');
+        $this->load->model('bin/Response');
+        $this->load->model('bin/EMessages');
+        $this->load->model('bin/Validator');
+        $this->load->model('bin/Crud');
+        $this->load->model('bin/Model');
+        $this->load->model('bin/Auth');
+        $this->load->model('bin/URL');
+        $this->load->model('bin/Hash');
+        $this->load->model('bin/Session');
+        $this->load->model('bin/Redirect');
+        $this->load->model('bin/DeplynAutoloader');
+        $this->load->model('bin/ObjUtil');
+        $this->request = new Request();
+        DeplynAutoloader::register();
+        log_message('info', 'Controller Class Initialized');
+    }
 
-	// --------------------------------------------------------------------
+    // --------------------------------------------------------------------
 
-	/**
-	 * Get the CI singleton
-	 *
-	 * @static
-	 * @return	object
-	 */
-	public static function &get_instance()
-	{
-		return self::$instance;
-	}
+    /**
+     * Get the CI singleton
+     *
+     * @static
+     * @return	object
+     */
+    public static function &get_instance() {
+        return self::$instance;
+    }
+
+    public function json($response) {
+        if (is_string($response) || is_numeric($response)) {
+            echo $response;
+        } else if (is_object($response) || is_array($response)) {
+            $r = new Response();
+            echo $r->json($response);
+        } if (is_callable($response) && get_class($response) === 'Response') {
+            echo $response->json();
+        }
+    }
 
 }

@@ -575,3 +575,6 @@ a.aling_text_center:hover{
   margin: 0% 5% !important;
   width: auto !important;
 }
+#mySidebar button{
+  padding: 0px;
+}

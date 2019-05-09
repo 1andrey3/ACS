@@ -11,15 +11,20 @@ class Formulario extends CI_Model{
     }
     function recorridoTecnologia(){
         $data= $this->db->query('SELECT * FROM tecnologia');
-         return $data->result_array(); 
+         return $data->result_array();
     }
     function recorridoBanda(){
         $data= $this->db->query('SELECT * FROM  banda');
-        return $data->result_array(); 
+        return $data->result_array();
     }
     function recorridoGrupoVM(){
-        $data= $this->db->query('SELECT * FROM  sitio');
-        return $data->result_array(); 
+        $this->db->select('g.ID_Site_Access, g.F_H_Solicitud  , est.sitio AS Estacion, b.nombre_banda AS Banda, t.nombre_tecnologia AS Tecnologia, g.Ente_ejecutor, g.Nombre_grupo_skype, g.Regional_skype, g.Persona_solicita, g.Hora_apertura, g.Ingeniero_CreadorG, g.Incidente');
+        $this->db->from('sitio g');
+        $this->db->join('estacion est', 'g.Estacion = est.id_estacion');
+        $this->db->join('banda b', 'g.Banda = b.id_banda');
+        $this->db->join('tecnologia t', 'g.Tecnologia = t.id_tecnologia');
+        $data = $this->db->get();
+        return $data->result_array();
     }
     function guardarDatos($data){
         var_dump($data);
