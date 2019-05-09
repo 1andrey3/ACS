@@ -17,6 +17,7 @@ $(document).ready(function(){
       },
     },
   });
+  
   document.getElementById('idZteFila').style.display = 'none';
   const data = table.rows().data();
   console.log(data);

@@ -84,6 +84,7 @@ class Welcome extends CI_Controller
 		$this->load->view('cambiarContrasena');
 	}
 	function creacionGrupoVM(){
+		$data['title'] = 'grupoVM';
 		$data['estacion'] = $this->Formulario->recorridoEstacion();
 		$data['tecnologia'] = $this->Formulario->recorridoTecnologia();
 		$data['banda'] = $this->Formulario->recorridoBanda();
@@ -125,14 +126,14 @@ class Welcome extends CI_Controller
 	}
 	function estadosActividades(){
 
-		$data[0] = $this->input->post('id_zte');
+		$data[0] = $this->input->post('id_apertura_estados');
 		$data[1] = $this->input->post('ingenieroControl');
 		$data[2] = $this->input->post('horaRevision');
 		$data[3] = $this->input->post('comentarioPC');
 		$data[4] = $this->input->post('selectorEstado');
 
 		
-		$datoCierre[0] = $this->input->post('id_zte');
+		$datoCierre[0] = $this->input->post('id_apertura_estados');
 		$datoCierre[1] = $this->input->post('RET');
 		$datoCierre[2] = $this->input->post('ampliacionDual');
 		$datoCierre[3] = $this->input->post('selectorDual');

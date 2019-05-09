@@ -2,9 +2,9 @@
 	<h1>Lista de actividades</h1>
 						<form action="estadosVM" method="POST">
 							<div id="envios_VM">
-								<input type="text" id="id_zte_form" name="id_zte_form">
-								<input type="text" id="estado_form" name="estado_form">
-								<input type="text" id="id_apertura_estados" name="id_apertura_estados">
+								<input style="display:none" type="text" id="id_zte_form" name="id_zte_form">
+								<input style="display:none" type="text" id="estado_form" name="estado_form">
+								<input style="display:none" type="text" id="id_apertura_estados" name="id_apertura_estados">
 							</div>
 		<!-- <div class="aviso_actividad">
 			<p>Esta actividad proviene de la estacion:</p>
@@ -24,22 +24,8 @@
 						<th>Resumen</th>
 					</tr>
 				</thead>
-				<tbody>
-				<?php foreach($actividades as $key=>$row): ?>
-					<tr>
-						<th><?php echo $row['id_vm_zte'] ?></th>
-						<th><?php echo $row['id_apertura'] ?></th>
-						<th><?php echo $row['id_tipo_trabajo'] ?></th>
-						<th><?php echo $row['ap_ingeniero_apertura'] ?></th>
-						<th><?php echo $row['estado_vm'] ?></th>
-						<th>
-							<button type="submit" id="resumen" class="btn btn-info"><i class="fa fa-file"></i></button>
-							</form>
-						</th>
-					</tr>
-				<?php endforeach ?>
-				</tbody>
 			</table>
+						</form>
 		</div>
 		</div>
 	<div id="proceso_apertura" class="modal fade" role="dialog">
@@ -223,33 +209,38 @@
 	</div>
 	<input type="text" id="id_zte_grupoVM" value="<?php echo $id_zte_grupoVM ?>">
 	<script>
-		// mini-formulario para envio de datos
-		document.getElementById('envios_VM').style.display = 'none';
-		var id_zte_grupoVM = document.getElementById('id_zte_grupoVM');
-		id_zte_grupoVM.style.display = 'none';
-		console.log(id_zte_grupoVM.value);
-		$(document).ready( function () {
-			const table = $('#tabla_actividades').DataTable({
-				"search": {
-      				"search": id_zte_grupoVM.value    
-   				}
-			});
-			const data = table.rows().data();
-			console.log(data);
-			const btn_resumen = document.querySelectorAll('#resumen');
-			console.log(btn_resumen);
-			btn_resumen.forEach( (evt, index) =>{		
-				evt.addEventListener('click', (a)=>{
-					const id_zte = data[index][0];
-					const id_apertura = data[index][1];
-					const estado = data[index][3];
-					console.log(estado,id_zte,id_apertura);
-					document.getElementById('estado_form').value = estado;
-					document.getElementById('id_zte_form').value = id_zte;
-					document.getElementById('id_apertura_estados').value = id_apertura;
-				})
-			});	
-		});
+		$(document).ready(function(){
+			listar();
+		})
+		const listar = function(){
+			const tabla = $('#tabla_actividades').DataTable({
+				"destroy": true,
+				"ajax":{
+					"method": "POST",
+					"url": "llamado_tabla_actividades"
+				},
+				"columns": [
+					{"data": "id_vm_zte"},
+					{"data": "id_apertura"},
+					{"data": "id_tipo_trabajo"},
+					{"data": "ap_ingeniero_apertura"},
+					{"data": "estado_vm"},
+					{"defaultContent": "<button type='submit' id='resumenes' class='btn btn-info'><i class='fa fa-file'></i></button>"}
+				]
+			})
+			obtener_data_fila('#tabla_actividades tbody', tabla);
+		}
+
+		const obtener_data_fila = function(tbody, table){
+			$(tbody).on('click','button#resumenes', function(){
+				const data = table.row($(this).parents('tr')).data();
+				console.log(data);
+				document.getElementById('id_zte_form').value = data.id_vm_zte;
+				document.getElementById('estado_form').value = data.estado_vm;
+				document.getElementById('id_apertura_estados').value = data.id_apertura;
+			})
+		}
+		
 		// trae los datos de la tabla Sitio
 		function llamadoTabla(url, data){
 			const push = new FormData();

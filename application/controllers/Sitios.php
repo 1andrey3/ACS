@@ -12,11 +12,12 @@ class Sitios extends CI_Controller
 	public function index() {
         $this->load->library('Datatables');
         $dt_authors = $this->datatables->init();
-        $dt_authors->select('g.ID_Site_Access, g.F_H_Solicitud  , est.sitio AS Estacion, b.nombre_banda AS Banda, t.nombre_tecnologia AS Tecnologia, g.Ente_ejecutor, g.Nombre_grupo_skype, g.Regional_skype, g.Persona_solicita, g.Hora_apertura, g.Ingeniero_CreadorG, g.Incidente')->from('sitio g')->join('estacion est', 'g.Estacion = est.id_estacion')->join('banda b', 'g.Banda = b.id_banda')->join('tecnologia t', 'g.Tecnologia = t.id_tecnologia');
+        $dt_authors->select('g.id_vm_zte, g.ID_Site_Access, g.F_H_Solicitud  , est.sitio AS Estacion, b.nombre_banda AS Banda, t.nombre_tecnologia AS Tecnologia, g.Ente_ejecutor, g.Nombre_grupo_skype, g.Regional_skype, g.Persona_solicita, g.Hora_apertura, g.Ingeniero_CreadorG, g.Incidente')->from('sitio g')->join('estacion est', 'g.Estacion = est.id_estacion')->join('banda b', 'g.Banda = b.id_banda')->join('tecnologia t', 'g.Tecnologia = t.id_tecnologia');
         $dt_authors
             ->style(array(
             'class' => 'table table-striped table-bordered',
             ))
+            ->column('id_vm_zte', 'id_vm_zte')
             ->column('ID_Site_Access', 'ID_Site_Access')
             ->column('F_H_Solicitud', 'F_H_Solicitud')
             ->column('Estacion', 'Estacion')

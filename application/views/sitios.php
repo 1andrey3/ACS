@@ -145,6 +145,8 @@
   <table class="table table-striped dataTable_camilo" id ="tabla_sitios">
   <thead>
     <tr>
+      
+      <th>ID vm zte</th>
       <th>ID Site Access</th>
       <th>Fecha y hora de solicitud</th>
       <th>Estación</th>
@@ -191,6 +193,7 @@
         deferRender:    true,
         ajax: base_url + "Sitios/mostrar_sitios",
         columns: [
+            { "data": "id_vm_zte" },
             { "data": "ID_Site_Access" },
             { "data": "F_H_Solicitud" },
             { "data": "Estacion" },
@@ -202,14 +205,15 @@
             { "data": "Persona_solicita" },
             { "data": "Hora_apertura" },
             { "data": "Ingeniero_CreadorG" },
-            { "data": "Incidente" }
+            { "data": "Incidente" },
+            {"defaultContent": "<button type='button' class='btn btn-info' data-toggle= modal  data-target='#nuevo_sitio' id ='tomarDatos' title='Tomar Datos'><i class='fa fa-copy'></i></button>"}
         ],
         // scrollY: 200,
         // scroller: {
         //     loadingIndicator: true
         // }
-        } );
-    } );
+        });
+    });
 </script>
 
   <!-- <script src="<?=base_url('assets/js/grupoVM.js') ?>"></script> -->

@@ -20,6 +20,10 @@ class Vm extends CI_Controller {
     $this->load->view("actividades", $data); 
     $this->load->view("parts/footer");
   }
+  public function llamado_tabla_actividades(){
+    $data['data'] =  $this->UserTable->tableActividades();
+    echo json_encode($data);
+  }
 
   public function buscar_tipos_trabajo(){
     $data=$this->Dao_vm_model->obtener_tipos_trabajo();
@@ -29,8 +33,8 @@ class Vm extends CI_Controller {
   public function EstadosVM(){
     $data['title']='Estados';
     $datos['id_zte'] = $_POST['id_zte_form']; 
-    $datos['id_apertura_estados'] = $_POST['id_apertura_estados']; 
     $datos['estado'] = $_POST['estado_form'];
+    $datos['id_apertura'] = $_POST['id_apertura_estados'];
     $grupoVM = $this->UserTable->estados_modal_actividades($datos['id_zte']);
     $datos['estacion'] = $grupoVM[0]['Estacion'];
     $datos['tecnologia'] = $grupoVM[0]['Tecnologia'];
