@@ -9,7 +9,9 @@ class Vm extends CI_Controller {
     $this->load->model('UserTable');
   }
   public function index(){
-    $data['actividades'] = $this->UserTable->tableActividades();
+   $data['actividades'] = $this->UserTable->tableActividades();
+   $data['usuarios'] = $this->UserTable->Mostrar();
+    //var_dump(json_encode $data));
     if($_POST){
       $data['id_zte_grupoVM'] = $_POST['idZteFila'];
     } else{
@@ -40,6 +42,8 @@ class Vm extends CI_Controller {
     $datos['tecnologia'] = $grupoVM[0]['Tecnologia'];
     $datos['banda'] = $grupoVM[0]['Banda'];
     $datos['ente'] = $grupoVM[0]['Ente_ejecutor'];
+    $datos['actividades'] = $this->UserTable->tableActividades();
+    $datos['usuarios'] = $this->UserTable->Mostrar();
     // var_dump($datos);
     $this->load->view("parts/header",$data);
     $this->load->view("estadosVM", $datos);

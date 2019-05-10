@@ -59,9 +59,9 @@
             <div class="DivInfo">
                 <label> Ingeniero Control: </label>
                 <select name="ingenieroControl" id="" class="form-control">
-                    <option value="1">a</option>
-                    <option value="2">c</option>
-                    <option value="3">b</option>
+                <?php foreach($usuarios as $key=>$row): ?>
+                    <option value="<?php echo $row['id_usuario'] ?>"><?php echo $row['nombres']." ".$row['apellidos'] ?></option>
+                <?php endforeach ?>
                 </select> <br>
                 <label for="">Hora Revisión:</label>
                 <input type="time" name="horaRevision" placeholder="ej: 14:00"> <br><br>
@@ -103,7 +103,9 @@
                 </select><br>  
                 <label for="">Ingeniero Cierre</label>
                 <select name="ingenieroCierre" id="" class="form-control">
-                    <option value="">1</option>
+                <?php foreach($usuarios as $key=>$row): ?>
+                    <option value="<?php echo $row['id_usuario'] ?>"><?php echo $row['nombres']." ".$row['apellidos'] ?></option>
+                <?php endforeach ?>
                 </select><br>  
                 <label for="">Hora Atención Cierre</label>
                 <input type="time" name="horaAtencionCierre" class="form-control">  
