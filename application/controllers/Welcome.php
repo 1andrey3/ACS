@@ -38,6 +38,7 @@ class Welcome extends CI_Controller
 		//var_dump($data);
 		echo json_encode($data);
 	}
+
 	public function insertUsers()
 	{
 		$info[0] = $this->input->post('idNumber');
@@ -49,6 +50,7 @@ class Welcome extends CI_Controller
 		$this->UserTable->insertar($info);
 		header('location:showUsers');
 	}
+
 	function datosGrupoVM(){
 		$form = [];
 		$form[0] = $_POST['idSiteAccess'];
@@ -65,8 +67,9 @@ class Welcome extends CI_Controller
 		$form[11] = $_POST['incidente'];
 		var_dump($form);
 		$this->Formulario->guardarDatos($form);
-		header('location:creacionGrupoVM');
+		header('location:../Sitios');
 	}
+
 	function UpdateSQL()
 	{
 		$actual[0] = $this->input->post('idNumberModal');
@@ -79,10 +82,12 @@ class Welcome extends CI_Controller
 		$this->UserTable->actualizarCI($actual);
 		header('location:showUsers');
 	}
+
 	function formularioCContrasena()
 	{
 		$this->load->view('cambiarContrasena');
 	}
+
 	function creacionGrupoVM(){
 		$data['title'] = 'grupoVM';
 		$data['estacion'] = $this->Formulario->recorridoEstacion();
@@ -91,7 +96,7 @@ class Welcome extends CI_Controller
 		$data['grupoSitios'] = $this->Formulario->recorridoGrupoVM();
 		$data['title'] = "Creación Grupos VM";
  		$this->load->view('parts/header',$data);
-		$this->load->view('grupoVM');
+		$this->load->view('sitios');
 		$this->load->view('parts/footer');
 	}
 
@@ -104,10 +109,12 @@ class Welcome extends CI_Controller
 
 		// var_dump(json_encode($tabla));
 	}
+
 	function tablaGrupovm(){
 		$tabla =  $this->Formulario->recorridoGrupoVM();
 		echo json_encode($tabla);
 	}
+
 	function CambioContra()
 	{
 		$inpCambio =  $this->input->post('inputDos');
@@ -124,6 +131,7 @@ class Welcome extends CI_Controller
 			$this->load->view('login',$data);
 		}
 	}
+
 	function estadosActividades(){
 
 		$data[0] = $this->input->post('id_apertura_estados');
@@ -131,7 +139,6 @@ class Welcome extends CI_Controller
 		$data[2] = $this->input->post('horaRevision');
 		$data[3] = $this->input->post('comentarioPC');
 		$data[4] = $this->input->post('selectorEstado');
-
 		
 		$datoCierre[0] = $this->input->post('id_apertura_estados');
 		$datoCierre[1] = $this->input->post('RET');

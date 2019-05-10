@@ -21,7 +21,7 @@
 						<th>Tipo de trabajo</th>
 						<th>Ingeniero_Apertura</th>
 						<th>Estado</th>
-						<th>Resumen</th>
+						<th>Cambio Estado</th>
 					</tr>
 				</thead>
 			</table>

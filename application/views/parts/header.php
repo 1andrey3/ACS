@@ -56,7 +56,6 @@
         <a href="<?= base_url('Vm/index') ?>" class='w3-bar-item w3-button'><i class="fa fa-edit"></i>Actividades</a>
         <?php if ($this->uri->segment(2) == 'principal' && $_SESSION['role'] == "administrador") : ?>
         <a href="<?= base_url('Usuarios') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> Gestion usuarios</a>
-        <a href="<?= base_url('Welcome/creacionGrupoVM') ?>" class='w3-bar-item w3-button'><i class="fa fa-users"></i> grupoVM</a>
         <a href="<?= base_url('cargarActividades') ?>" class='w3-bar-item w3-button'><i class="fa fa-upload"></i> Cargar Actividades</a>
       <?php endif ?>
     </div>

@@ -115,8 +115,7 @@
                 <textarea  id="" name="comentariosCierre" cols="30" rows="10">
                 </textarea>
                 <input type="submit" value="Enviar">  
-            </div>  
-            
+            </div>             
         </div>
     </form> 
     <script src="<?=base_url('assets/js/estadosVM.js') ?>"></script>      
