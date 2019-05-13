@@ -13,9 +13,9 @@ class Vm extends CI_Controller {
    $data['usuarios'] = $this->UserTable->Mostrar();
     //var_dump(json_encode $data));
     if($_POST){
-      $data['id_zte_grupoVM'] = $_POST['idZteFila'];
+      $data['id_zte_sitios'] = $_POST['idZteFila'];
     } else{
-      $data['id_zte_grupoVM'] = '';
+      $data['id_zte_sitios'] = '';
     }
     $titulo['title']='actividades';
     $this->load->view("parts/header",$titulo);

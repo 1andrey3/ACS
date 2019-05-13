@@ -1,3 +1,4 @@
+<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
 <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
@@ -79,7 +80,7 @@
                       <label for="">Ente Ejecutor:</label><br>
                       <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1" ><i class="glyphicon glyphicon-text-size"></i></span>
-                        <input type="text" class="form-control" name="enteEjecutor" id="enteEjecutor" aria-describedby="basic-addon1">
+                        <input type="number" class="form-control" name="enteEjecutor" id="enteEjecutor" aria-describedby="basic-addon1">
                       </div>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4 mt-20">
@@ -141,31 +142,34 @@
   // $this->datatables->generate('dt_authors');
   // $this->datatables->jquery('dt_authors');
 ?>
-<div id="section_tabla_sitios">
-  <table class="table table-striped dataTable_camilo" id ="tabla_sitios">
-    <thead>
-      <tr>      
-        <th>ID vm zte</th>
-        <th>ID Site Access</th>
-        <th>Fecha y hora de solicitud</th>
-        <th>Estación</th>
-        <th>Tecnología</th>
-        <th>Banda</th>
-        <th>Ente Ejecutor</th>
-        <th>Nombre del Grupo Skype</th>
-        <th>Regional Skype</th>
-        <th>Persona Que Solicita</th>
-        <th>Hora de Apertura</th>
-        <th>Ingeniero Creador De Grupo</th>
-        <th>Incidente</th>
-        <th></th>
-      </tr>
-    </thead>
-  </table>
-</div>
+<form action="Vm/index" method="POST">
+  <input type="text" id="idZteFila" name="idZteFila">
+  <div id="section_tabla_sitios">
+    <table class="table table-striped dataTable_camilo" id ="tabla_sitios">
+      <thead>
+        <tr>      
+          <th>ID vm zte</th>
+          <th>ID Site Access</th>
+          <th>Fecha y hora de solicitud</th>
+          <th>Estación</th>
+          <th>Tecnología</th>
+          <th>Banda</th>
+          <th>Ente Ejecutor</th>
+          <th>Nombre del Grupo Skype</th>
+          <th>Regional Skype</th>
+          <th>Persona Que Solicita</th>
+          <th>Hora de Apertura</th>
+          <th>Ingeniero Creador De Grupo</th>
+          <th>Incidente</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</form>
 <script>
   var base_url = "<?= base_url(); ?>";
-
+  document.getElementById('idZteFila').style.display = "none";
 
   $(document).ready(function() {
     listar();
@@ -188,10 +192,11 @@
             { "data": "Hora_apertura" },
             { "data": "Ingeniero_CreadorG" },
             { "data": "Incidente" },
-            {"defaultContent": "<button type='button' class='btn btn-info' data-toggle= modal  data-target='#nuevo_sitio' id ='tomarDatos' title='Tomar Datos'><i class='fa fa-copy'></i></button><button  type='' id='vista_actividades' title ='Estados' class='btn btn-info'><i class='fa fa-list-alt'></i></i></button>"}
+            {"defaultContent": "<button type='button' class='btn btn-info' data-toggle= modal  data-target='#nuevo_sitio' id ='tomarDatos' title='Tomar Datos'><i class='fa fa-copy'></i></button><button type='' id='vista_actividades' title ='Estados' class='btn btn-info'><i class='fa fa-list-alt'></i></i></button>"}
         ],
       });
       obtener_data_fila('#tabla_sitios tbody', tabla)
+      enviar_dato('#tabla_sitios tbody', tabla)
     }
     const obtener_data_fila = function(tbody, table){
 			$(tbody).on('click','button#tomarDatos', function(){
@@ -212,6 +217,14 @@
         // $("#banda option[value=" + banda + "]").attr("selected",true);
         // $("#tecnologia option[value="+ tecnologia +"]").attr("selected",true);
 			})
-		}
+    }
+    
+    const enviar_dato = function(tbody, table){
+      $(tbody).on('click','button#vista_actividades', function(){
+				const data = table.row($(this).parents('tr')).data();
+        console.log(data.id_vm_zte);
+        document.getElementById('idZteFila').value = data.id_vm_zte;
+			})
+    }
 </script>
   <!-- <script src="<?=base_url('assets/js/grupoVM.js') ?>"></script> -->

@@ -13,20 +13,20 @@
                 <div class="caracteristicas">
                     <div>
                         <label for="">Estación</label><br>
-                        <input type="text" name="Estacion" value="<?php echo $estacion ?>"><br>
+                        <input readonly type="text" name="Estacion" value="<?php echo $estacion ?>"><br>
                         <input style="display:none" type="text" name="id_apertura_estados" value="<?php echo $id_apertura ?>"><br>
                     </div>
                     <div>
                         <label for="">Tecnologia</label><br>
-                        <input type="text" name="Tecnologia" value="<?php echo $tecnologia ?>"><br>
+                        <input  readonly type="text" name="Tecnologia" value="<?php echo $tecnologia ?>"><br>
                     </div>
                     <div>
                         <label for="">Banda</label><br>
-                        <input type="text" name="Banda" value="<?php echo $banda ?>"><br>
+                        <input readonly type="text" name="Banda" value="<?php echo $banda ?>"><br>
                     </div>
                     <div>
                         <label for="">Tipo De Trabajo</label><br>
-                        <input type="text" name="tipoTrabajo" value="<?php echo $ente ?>"><br>
+                        <input readonly type="text" name="tipoTrabajo" value="<?php echo $ente ?>"><br>
                         <input type="text" id="estados" value="<?php echo $estado ?>"><br>
                     </div>
                 </div>

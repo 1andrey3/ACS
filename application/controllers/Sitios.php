@@ -20,7 +20,7 @@ class Sitios extends CI_Controller
 		$this->load->view('parts/footer');
     }
 
-    public function mostrar_sitios() {
+    public function mostrar_sitios(){
         $data = $this->Formulario->recorridoGrupoVM();
         echo json_encode(array('data' => $data));
     }

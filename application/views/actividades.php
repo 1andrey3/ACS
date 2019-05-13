@@ -65,8 +65,8 @@
 							<div class="Estado_VM">
 								<h2>Estado de VM</h2>
 								<select name="estado_vm" id="estado_vm">
-									<option value="punto-control">cerrado</option>
-									<option value="cierre">Punto de control</option>
+									<option value="punto-control">Punto de control</option>
+									<option value="cierre">cierre</option>
 								</select>
 							</div>
 							<div class="cuerpo">
@@ -278,13 +278,16 @@
 			</form>
 		</div>
 	</div>
-	<input  style="display:none" type="text" id="id_zte_grupoVM" value="<?php echo $id_zte_grupoVM ?>">
+	<input   style="display:none" type="text" id="id_zte_sitios" value="<?php echo $id_zte_sitios ?>">
 	<script>
 		$(document).ready(function(){
 			listar();
 		})
 		const listar = function(){
 			const tabla = $('#tabla_actividades').DataTable({
+				"search": {
+      				"search": document.getElementById('id_zte_sitios').value    
+   				},
 				"destroy": true,
 				"ajax":{
 					"method": "POST",
