@@ -1,56 +1,11 @@
+<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
 <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-
-class Sitios extends CI_Controller
-{
-	function __construct()
-	{
-        parent::__construct();
-
-
-	}
-
-	public function index() {
-        $this->load->library('Datatables');
-        // $dt_authors = new Datatables;
-        $dt_authors = $this->datatables->init();
-        // $dt_authors->select('*')->from('sitio');
-        $dt_authors->select('g.ID_Site_Access, g.F_H_Solicitud  , est.sitio AS Estacion, b.nombre_banda AS Banda, t.nombre_tecnologia AS Tecnologia, g.Ente_ejecutor, g.Nombre_grupo_skype, g.Regional_skype, g.Persona_solicita, g.Hora_apertura, g.Ingeniero_CreadorG, g.Incidente')->from('sitio g')->join('estacion est', 'g.Estacion = est.id_estacion')->join('banda b', 'g.Banda = b.id_banda')->join('tecnologia t', 'g.Tecnologia = t.id_tecnologia');
-        $dt_authors
-            ->style(array(
-            'class' => 'table table-striped table-bordered',
-            ))
-            ->column('ID_Site_Access', 'ID_Site_Access')
-            ->column('F_H_Solicitud', 'F_H_Solicitud')
-            ->column('Estacion', 'Estacion')
-            ->column('Banda', 'Banda')
-            ->column('Tecnologia', 'Tecnologia')
-            ->column('Ente_ejecutor', 'Ente_ejecutor')
-            ->column('Nombre_grupo_skype', 'Nombre_grupo_skype')
-            ->column('Regional_skype', 'Regional_skype')
-            ->column('Persona_solicita', 'Persona_solicita')
-            ->column('Ingeniero_CreadorG', 'Ingeniero_CreadorG')
-            ->column('Incidente', 'Incidente');
-        $this->datatables->create('dt_authors', $dt_authors);
-
-
-		$data['title'] = "Listado de sitios";
- 		$this->load->view('parts/header',$data);
-		$this->load->view('sitios');
-		$this->load->view('parts/footer');
-    }
-
-    public function mostrar_sitios() {
-        $data = $this->Formulario->recorridoGrupoVM();
-        echo json_encode(array('data' => $data));
-    }
-}
-cz
-<?php
+  defined('BASEPATH') or exit('No direct script access allowed'); 
 ?>
+
 <link rel="stylesheet" href="<?= base_url('assets/css/stylegrupoVM.css'); ?>">
 <ul class="nav nav-tabs" style="margin: 30px 0px;">
     <li class="active"><a data-toggle="tab" href="#id_section_engineering">Sitios</a></li>
@@ -125,7 +80,7 @@ cz
                       <label for="">Ente Ejecutor:</label><br>
                       <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1" ><i class="glyphicon glyphicon-text-size"></i></span>
-                        <input type="text" class="form-control" name="enteEjecutor" id="enteEjecutor" aria-describedby="basic-addon1">
+                        <input type="number" class="form-control" name="enteEjecutor" id="enteEjecutor" aria-describedby="basic-addon1">
                       </div>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4 mt-20">
@@ -184,78 +139,32 @@ cz
     </form>
   </div>
   <?php
-  $this->datatables->generate('dt_authors');
-  $this->datatables->jquery('dt_authors');
+  // $this->datatables->generate('dt_authors');
+  // $this->datatables->jquery('dt_authors');
 ?>
-<!-- <div id="section_tabla_sitios">
-  <table class="table table-striped dataTable_camilo" id ="tabla_sitios">
-  <thead>
-    <tr>
-      <th>ID Site Access</th>
-      <th>Fecha y hora de solicitud</th>
-      <th>Estación</th>
-      <th>Tecnología</th>
-      <th>Banda</th>
-      <th>Ente Ejecutor</th>
-      <th>Nombre del Grupo Skype</th>
-      <th>Regional Skype</th>
-      <th>Persona Que Solicita</th>
-      <th>Hora de Apertura</th>
-      <th>Ingeniero Creador De Grupo</th>
-      <th>Incidente</th>
-      <th></th>
-    </tr>
-  </thead>
-</table>
-</div> -->
-<script>
-  var base_url = "<?= base_url(); ?>";
-
-  $(document).ready(function() {
-        $('#tabla_sitios').DataTable( {
-        //     "processing": true,
-        //     "serverSide": true,
-        //     "ajax": base_url + "Sitios/mostrar_sitios",
-        //     "columns": [
-        //     { "data": "ID_Site_Access" },
-        //     { "data": "F_H_Solicitud" },
-        //     { "data": "Estacion" },
-        //     { "data": "Banda" },
-        //     { "data": "Tecnologia" },
-        //     { "data": "Ente_ejecutor" },
-        //     { "data": "Nombre_grupo_skype" },
-        //     { "data": "Regional_skype" },
-        //     { "data": "Persona_solicita" },
-        //     { "data": "Hora_apertura" },
-        //     { "data": "Ingeniero_CreadorG" },
-        //     { "data": "Incidente" }
-        // ]
-        processing: true,
-        serverSide: true,
-        ordering: false,
-        searching: true,
-        deferRender:    true,
-        ajax: base_url + "Sitios/mostrar_sitios",
-        columns: [
-            { "data": "ID_Site_Access" },
-            { "data": "F_H_Solicitud" },
-            { "data": "Estacion" },
-            { "data": "Banda" },
-            { "data": "Tecnologia" },
-            { "data": "Ente_ejecutor" },
-            { "data": "Nombre_grupo_skype" },
-            { "data": "Regional_skype" },
-            { "data": "Persona_solicita" },
-            { "data": "Hora_apertura" },
-            { "data": "Ingeniero_CreadorG" },
-            { "data": "Incidente" }
-        ],
-        // scrollY: 200,
-        // scroller: {
-        //     loadingIndicator: true
-        // }
-        } );
-    } );
-</script>
-
-  <!-- <script src="<?=base_url('assets/js/grupoVM.js') ?>"></script> -->
+<form action="Vm/index" method="POST">
+  <input type="text" id="idZteFila" name="idZteFila">
+  <div id="section_tabla_sitios">
+    <table class="table table-striped dataTable_camilo" id ="tabla_sitios">
+      <thead>
+        <tr>      
+          <th>ID vm zte</th>
+          <th>ID Site Access</th>
+          <th>Fecha y hora de solicitud</th>
+          <th>Estación</th>
+          <th>Tecnología</th>
+          <th>Banda</th>
+          <th>Ente Ejecutor</th>
+          <th>Nombre del Grupo Skype</th>
+          <th>Regional Skype</th>
+          <th>Persona Que Solicita</th>
+          <th>Hora de Apertura</th>
+          <th>Ingeniero Creador De Grupo</th>
+          <th>Incidente</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</form>
+<script src="<?=base_url('assets/js/grupoVM.js') ?>"></script>

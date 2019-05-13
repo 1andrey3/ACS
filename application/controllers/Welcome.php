@@ -38,6 +38,7 @@ class Welcome extends CI_Controller
 		//var_dump($data);
 		echo json_encode($data);
 	}
+
 	public function insertUsers()
 	{
 		$info[0] = $this->input->post('idNumber');
@@ -49,6 +50,7 @@ class Welcome extends CI_Controller
 		$this->UserTable->insertar($info);
 		header('location:showUsers');
 	}
+
 	function datosGrupoVM(){
 		$form = [];
 		$form[0] = $_POST['idSiteAccess'];
@@ -65,8 +67,9 @@ class Welcome extends CI_Controller
 		$form[11] = $_POST['incidente'];
 		var_dump($form);
 		$this->Formulario->guardarDatos($form);
-		header('location:creacionGrupoVM');
+		header('location:../Sitios');
 	}
+
 	function UpdateSQL()
 	{
 		$actual[0] = $this->input->post('idNumberModal');
@@ -79,18 +82,21 @@ class Welcome extends CI_Controller
 		$this->UserTable->actualizarCI($actual);
 		header('location:showUsers');
 	}
+
 	function formularioCContrasena()
 	{
 		$this->load->view('cambiarContrasena');
 	}
+
 	function creacionGrupoVM(){
+		$data['title'] = 'grupoVM';
 		$data['estacion'] = $this->Formulario->recorridoEstacion();
 		$data['tecnologia'] = $this->Formulario->recorridoTecnologia();
 		$data['banda'] = $this->Formulario->recorridoBanda();
 		$data['grupoSitios'] = $this->Formulario->recorridoGrupoVM();
 		$data['title'] = "Creación Grupos VM";
  		$this->load->view('parts/header',$data);
-		$this->load->view('grupoVM');
+		$this->load->view('sitios');
 		$this->load->view('parts/footer');
 	}
 
@@ -103,10 +109,12 @@ class Welcome extends CI_Controller
 
 		// var_dump(json_encode($tabla));
 	}
+
 	function tablaGrupovm(){
 		$tabla =  $this->Formulario->recorridoGrupoVM();
 		echo json_encode($tabla);
 	}
+
 	function CambioContra()
 	{
 		$inpCambio =  $this->input->post('inputDos');
@@ -123,15 +131,16 @@ class Welcome extends CI_Controller
 			$this->load->view('login',$data);
 		}
 	}
+
 	function estadosActividades(){
 
-		$data[0] = $this->input->post('id_zte');
+		$data[0] = $this->input->post('id_apertura_estados');
 		$data[1] = $this->input->post('ingenieroControl');
 		$data[2] = $this->input->post('horaRevision');
 		$data[3] = $this->input->post('comentarioPC');
-
+		$data[4] = $this->input->post('selectorEstado');
 		
-		$datoCierre[0] = $this->input->post('id_zte');
+		$datoCierre[0] = $this->input->post('id_apertura_estados');
 		$datoCierre[1] = $this->input->post('RET');
 		$datoCierre[2] = $this->input->post('ampliacionDual');
 		$datoCierre[3] = $this->input->post('selectorDual');
@@ -147,10 +156,8 @@ class Welcome extends CI_Controller
 		$datoCierre[13] = $this->input->post('horaAtencionCierre');
 		$datoCierre[14] = $this->input->post('horaConfirmacionCierre');
 		$datoCierre[15] = $this->input->post('comentariosCierre');
-
+		$datoCierre[16] = $this->input->post('selectorEstado');
 		$this->UserTable->enviarPuntoControl($data);
-		$this->UserTable->enviarCierre($datoCierre);
-		var_dump($datoCierre);
-				
+		$this->UserTable->enviarCierre($datoCierre);		
 	}
 }
