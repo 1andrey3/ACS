@@ -22,6 +22,12 @@ class Vm extends CI_Controller {
     $this->load->view("actividades", $data); 
     $this->load->view("parts/footer");
   }
+  public function nueva_apertura(){
+    $data['title'] = 'Crear Apertura';
+    $this->load->view("parts/header", $data);
+    $this->load->view("nuevaApertura"); 
+    $this->load->view("parts/footer");
+  }
   public function llamado_tabla_actividades(){
     $data['data'] =  $this->UserTable->tableActividades();
     echo json_encode($data);

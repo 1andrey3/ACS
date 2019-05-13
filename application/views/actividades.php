@@ -39,35 +39,41 @@
 				<div class="modal-body">
 					<div class="container_general">
 						<div class="contenido-1">
-								<h1>Apertura</h1>
-							<div class="container-id_zte">
-								<h2>ID ZTE</h2>
-								<input type="number" name="id_zte" id="id_zte" value="">
-							</div>
-							<div class="Estacion">
-								<h2>Estación:</h2>
-								<div class="input-group">
-									<input readonly type="text" name="estacion" id="estacion" value="">
+							<div class="row contenidoCabecera">
+								<div class="parte_uno_cc col-md-5">
+									<h1>Apertura</h1>
+									<div class="container-id_zte">
+										<h2>ID ZTE</h2>
+										<input type="number" name="id_zte" id="id_zte" value="">
+									</div>
 								</div>
-							</div>
-							<div class="Tecnologia">
-								<h2>Tecnología:</h2>
-								<input readonly type="text" name="tecnologia" id="tecnologia" value="">
-							</div>
-							<div class="Banda">
-								<h2>Banda:</h2>
-								<input readonly type="text" name="banda" id="banda" value="">
-							</div>
-							<div class="Tipo_trabajo">
-								<h2>Tipo de trabajo</h2>
-								<input readonly type="text" name="tipo_trabajo" id="tipo_trabajo" value="">
-							</div>
-							<div class="Estado_VM">
-								<h2>Estado de VM</h2>
-								<select name="estado_vm" id="estado_vm">
-									<option value="punto-control">Punto de control</option>
-									<option value="cierre">cierre</option>
-								</select>
+								<div class="parte_dos_cc col-md-7">
+									<div class="Estacion">
+										<h2>Estación:</h2>
+										<div class="input-group">
+											<input readonly type="text" name="estacion" id="estacion" value="">
+										</div>
+									</div>
+									<div class="Tecnologia">
+										<h2>Tecnología:</h2>
+										<input readonly type="text" name="tecnologia" id="tecnologia" value="">
+									</div>
+									<div class="Banda">
+										<h2>Banda:</h2>
+										<input readonly type="text" name="banda" id="banda" value="">
+									</div>
+									<div class="Tipo_trabajo">
+										<h2>Tipo de trabajo</h2>
+										<input readonly type="text" name="tipo_trabajo" id="tipo_trabajo" value="">
+									</div>
+									<div class="Estado_VM">
+										<h2>Estado de VM</h2>
+										<select name="estado_vm" id="estado_vm">
+											<option value="punto-control">Punto de control</option>
+											<option value="cierre">cierre</option>
+										</select>
+									</div>
+								</div>
 							</div>
 							<div class="cuerpo">
 								<div class="Motivo_del_estado">
